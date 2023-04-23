@@ -1,0 +1,37 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #7e7e7e;
+  font-family: "Maven Pro", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  padding: 5px 0;
+  font-size: 16px;
+}
+
+.title {
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.listFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer {
+  padding: 20px 10px;
+  background-color: #eaeaf2;
+  filter: drop-shadow(0px 4px 36px rgba(51, 88, 234, 0.15));
+  display: flex;
+  margin-top: auto;
+  justify-content: space-between;
+}
