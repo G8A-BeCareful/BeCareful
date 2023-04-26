@@ -14,7 +14,7 @@ h1 {
     font-size: 3.5em;
 }
 
-div{
+.quest, .form{
     text-align: left;
     position: sticky;
 }
@@ -39,6 +39,7 @@ nav ul li{
     background-color: white;
     width: 94%;
     text-align: left;
+    /*font-weight: bold;*/
     position: sticky;
 }
 
@@ -57,6 +58,7 @@ nav a{
 .sous{
     display: none;
     background-color: white;
+    font-weight: 100;
     position: absolute left;
     width: 100%;
     box-shadow: 0px 0px 0px white;
@@ -75,9 +77,23 @@ textarea{
 }
 
 button{
+    text-align: center;
+    background-color: #3358EA;
+    margin: 0 auto;
+    color: #ffffff;
+    position: relative;
+    width: 190px;
+    height: 40px;
+    left: 45%;
+    top: 5px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #acacac;
+}
+
+/*button{
 
 /* Auto layout */
-display: flex;
+/*display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
@@ -91,11 +107,11 @@ top: 5px;
 background: #3358EA;
 border: none;
 border-radius: 10px;
-box-shadow: 5px 5px 5px #acacac;
+box-shadow: 5px 5px 5px #acacac;*/
 
 /* Envoyer */
 
-width: 100px;
+/*width: 100px;
 height: 30px;
 
 font-family: 'Inter';
@@ -103,14 +119,14 @@ font-style: normal;
 font-weight: 400;
 font-size: 20px;
 line-height: 24px;
-color: #3358EA;
+color: #3358EA;*/
 
 
 /* Inside auto layout */
-flex: none;
+/*flex: none;
 order: 0;
 flex-grow: 0;
-}
+}*/
 
 /*A faire
 transition lors déploiement des réponses
