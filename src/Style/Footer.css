@@ -34,3 +34,8 @@ ul li {
   margin-top: auto;
   justify-content: space-between;
 }
+
+.link {
+  color: #7e7e7e;
+  text-decoration: none;
+}

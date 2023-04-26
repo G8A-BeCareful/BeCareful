@@ -110,3 +110,12 @@ h1 {
   text-align: center;
   line-height: 27px;
 }
+
+.titleTeam {
+  text-align: center;
+  font-size: 30px;
+}
+
+.titleAll {
+  font-size: 40px;
+}
