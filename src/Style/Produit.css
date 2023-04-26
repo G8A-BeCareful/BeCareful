@@ -1,134 +1,83 @@
-/* Définir les styles pour les titres */
-.bubble h2 {
-  font-family: "Nunito Bold", sans-serif;
-  font-size: 15px;
-}
-
-/* Définir les styles pour les textes */
-.bubble p {
-  font-family: "Nunito Light", sans-serif;
-  font-size: 12px;
-}
-
-/* Définir les styles pour l'espace entre le header et le footer */
-main {
-  background-color: #f4f4fc;
-  padding: 1em;
-  position: absolute;
-  /*width: 1000px;
-  height: 900;
-  left: 0px;
-  top: 90px;*/
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
 body {
-  margin: 5;
   font-family: "Maven Pro", sans-serif;
-  height: 100vh;
-  width: 100vw;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-/* styles pour le contenu */
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 100%;
-  padding: 1em;
+  flex-direction: row;
   background-color: #f4f4fc;
 }
 
-.bulles {
-  width: 50%;
-}
-
-/* Définir les styles pour les bulles */
-.bubble {
-  background-color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  color: #7e7e7e;
-  padding: 20px;
-  margin-bottom: 20px;
-  margin-left: 40px;
-  /*width: 509.03px;
-  left: 79.97px;
-  top: 130px;*/
-  height: 105.23px;
-  text-align: justify;
-  font-size: 12px;
-  font-family: "Nunito Light", sans-serif;
-}
-.casque {
-  position: absolute;
-  width: 35px;
-  height: 28.49px;
-  left: 200px;
-  top: 220px;
-}
-.coeur {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  left: 230px;
-  top: 55px;
-}
-x .nuage {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  left: 195px;
-  top: 390px;
-}
-.thermomètre {
-  position: absolute;
-  width: 45px;
-  height: 32px;
-  left: 340px;
-  top: 555px;
-}
-/* Définir les styles pour l'image du produit */
-.produit-image {
-  width: 30%;
-  height: auto;
-  float: right;
-  margin-left: 0 auto 0 2em;
-  position: absolute;
-  top: 25%;
-  left: 60%;
-}
-.produit-titre {
-  text-align: center;
-  /*float: right;*/
-  color: #7e7e7e;
-  /*margin-left: 0 auto 0 2em;
-  margin-top: 20;
-  margin-bottom: 20px;
-  left: 500px;
-  top: 250px;*/
+.columnBubble {
   display: flex;
-  /*justify-content: space-between;
-  align-items: flex-start;*/
-  font-size: 16px;
-  font-weight: bold;
-  /*height: 100%;
-  padding: 30em;*/
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin-top: 5%;
+  margin-bottom: 1%;
 }
 
-.produit-image-container {
+.columnImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 50%;
-  vertical-align: middle;
-  display: grid;
 }
+
+.box {
+  width: 85%;
+  background: #ffffff;
+  box-shadow: 19.37px 19.37px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 4%;
+}
+
+.rowIcon {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgSize {
+  margin-left: 2%;
+  width: 7%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.imgSize1 {
+  margin-left: 2%;
+  width: 6%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.imgSize2 {
+  margin-left: 2%;
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.rouge {
+  color: red;
+}
+
 .vert {
   color: #10c900;
 }
-.rouge {
-  color: #ff0000;
+
+.grey {
+  color: #7e7e7e;
+}
+
+.bigTitle {
+  font-size: 35px;
+  color: rgba(225, 146, 26, 0.95);
 }

@@ -1,14 +1,13 @@
 body {
   font-family: "Maven Pro", sans-serif;
   box-sizing: border-box;
-  min-height: 100vh;
   margin: 0;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: 20px 10px;
   background: #ffffff;
   box-shadow: 0px 4px 36px -5px rgba(51, 88, 234, 0.15);
@@ -24,7 +23,6 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
   gap: 50px;
 }
 
@@ -55,12 +53,20 @@ body {
 .buttonPlace {
   margin-left: 50px;
 }
+
 .header a.logo {
   font-size: 23px;
   font-weight: bold;
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
   color: black;
-  margin-left: 5%;
+  margin-left: 1%;
+}
+
+.logoImg {
+  margin-right: 10px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 500px) {
