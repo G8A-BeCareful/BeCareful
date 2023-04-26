@@ -1,13 +1,14 @@
 body {
   display: flex;
   justify-content: center;
-  flex-direction: columns;
+  flex-direction: column;
   align-items: center;
   background-color: #f5f5f5;
-  font-family: "Roboto", sans-serif;
+  margin: 0;
+  font-family: "Maven Pro", sans-serif;
 }
+
 form {
-  margin-top: 20px;
   background-color: #fff;
   padding: 40px 60px;
   border-radius: 10px;
@@ -21,69 +22,51 @@ form .h1 {
   font-weight: bold;
   font-family: "Maven Pro", sans-serif;
 }
+
 form .inputs {
   display: flex;
   flex-direction: column;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 form .inputs input[type="email"],
 input[type="password"] {
   padding: 15px;
   border: none;
   border-radius: 5px;
-  background-color: #0000;
   outline-style: solid;
-  outline-color: #00318c;
+  outline-color: #3358ea;
   outline-width: 2px;
   margin-bottom: 15px;
   font-family: "Maven Pro", sans-serif;
 }
 form p.inscription {
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-top: 30px;
   color: #878787;
   font-family: "Maven Pro", sans-serif;
 }
 form p.inscription span {
-  color: #00318c;
+  color: #3358ea;
 }
-form button {
-  padding: 15px 25px;
-  border-radius: 15px;
-  border: none;
-  font-size: 15px;
-  color: #fff;
-  background-color: #00318c;
-  outline: none;
-  cursor: pointer;
-}
+
 form p.forgot span {
-  color: #00318c;
+  color: #3358ea;
 }
+
 form .Logop {
-  margin: 1rem;
-  text-align: left;
-}
-form .Logoc {
-  display: inline-block;
-  vertical-align: middle;
-}
-#row-rev {
-  margin-top: auto;
   display: flex;
   flex-direction: column;
 }
 
-form .Logoc {
+.rowLogo {
   display: flex;
   flex-direction: row;
-  margin-left: -20%;
-}
-form .Logoi {
-  display: inline-block;
-  margin-left: -20%;
+  align-items: center;
 }
 
+.imgLogo {
+  margin-right: 1%;
+}
 .mainBox {
   height: 100vh;
   width: 50%;
@@ -92,36 +75,17 @@ form .Logoi {
   flex: none;
 }
 .boxBlue {
-  background: linear-gradient(blue, darkblue);
   width: 50%;
   align-self: auto;
   height: 100vh;
   background-image: url("../img/Rond-multi-connexion.png");
   background-repeat: no-repeat;
-  background-size: 80%;
+  background-size: 70%;
   background-position: 50% 20%;
   align-items: flex-end;
   display: flex;
   justify-content: center;
 }
-.content {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.slogan {
-  font-family: "Maven Pro";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  text-align: center;
-  color: #ffffff;
-}
-
 .content {
   width: 100vw;
   height: 100vh;
@@ -141,7 +105,8 @@ form .Logoi {
   color: #ffffff;
 }
 
-form button {
+.seConnect {
+  margin-top: 20px;
   padding: 15px 25px;
   border-radius: 15px;
   border: none;
@@ -156,7 +121,23 @@ form button {
   font-family: "Maven Pro", sans-serif;
 }
 
+.boutonConnect {
+  margin-top: 4%;
+}
+
 svg {
-  width: 10%;
+  margin-right: 2%;
+  margin-top: 3%;
+  width: 8%;
+  aspect-ratio: 3/2;
   object-fit: contain;
+  color: #3358ea;
+}
+
+.Inscris {
+  text-decoration: none;
+}
+
+.Inscris:hover {
+  text-decoration: underline;
 }
