@@ -14,11 +14,6 @@ form {
   border-radius: 10px;
   min-width: 300px;
 }
-<<<<<<< Updated upstream
-form h1{
-  color: #0000;
-  text-align:center;
-=======
 form .h1 {
   color: #0000;
   text-align: center;
@@ -26,15 +21,14 @@ form .h1 {
   font-weight: bold;
   font-family: "Maven Pro", sans-serif;
 
->>>>>>> Stashed changes
 }
-form .inputs {
+
+form .inputs input[type="email"],
+input[type="password"], input[type="ConfirmEmail"],
+input[type="ConfirmPassword"]{
+  min-width: 80%;
   display: flex;
   flex-direction: column;
-  margin-top: 10%;
-}
-form .inputs input[type="email"],
-input[type="password"] {
   padding: 15px;
   border: none;
   border-radius: 5px;
@@ -45,33 +39,25 @@ input[type="password"] {
   margin-bottom: 15px;
   font-family: "Maven Pro", sans-serif;
 }
-form p.inscription {
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #878787;
+form .inputs input[type="Prenom"],
+input[type="Nom"]{
+  margin-top: 5%;
+  margin-right: 2vw;
+  min-width: 35%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0000;
+  outline-style: solid;
+  outline-color: #3358ea;
+  outline-width: 2px;
+  margin-bottom: 15px;
+  display: inline-block;
+  flex-direction: row;
   font-family: "Maven Pro", sans-serif;
 }
-form p.inscription span {
-  color: #3358ea;
-}
 
-form p.forgot span {
-  color: #3358ea;
-}
 form .Logop {
-<<<<<<< Updated upstream
-    margin: 1rem;
-    text-align: left;
-  }
-form .Logoc {
-  display: inline-block;
-  vertical-align: middle;
-}
-.row-rev {
-  display: flex;
-    flex-direction: column;
-  }
-=======
   margin-top: auto;
   display : flex;
   flex-direction: row;
@@ -85,7 +71,6 @@ form .Logoi {
   display: inline-block;
   margin-left: -20%;
 }
->>>>>>> Stashed changes
 .mainBox {
   height: 100vh;
   width: 50%;
@@ -94,37 +79,6 @@ form .Logoi {
   flex: none;
 }
 .boxBlue {
-<<<<<<< Updated upstream
-    background: linear-gradient(blue, darkblue);
-    width: 50%;
-    align-self: auto;
-    height: 100vh;
-    background-image: url("Rond\ multi\ connexion.png");
-    background-repeat: no-repeat;
-    background-size: 80%;
-    background-position: 50% 20%;
-    align-items: flex-end;
-    display: flex;
-    justify-content: center;
-}
-.content {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  .slogan {
-    font-family: 'Maven Pro';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    text-align: center;
-    color: #FFFFFF;
-  }
-=======
   width: 50%;
   align-self: auto;
   height: 100vh;
@@ -168,6 +122,7 @@ form button{
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-family: "Maven Pro", sans-serif;
+
 }
 
 svg {
@@ -175,4 +130,3 @@ svg {
   object-fit: contain;
 }
 
->>>>>>> Stashed changes
