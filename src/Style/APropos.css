@@ -1,0 +1,112 @@
+body {
+  font-family: "Mven Pro", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.topPage {
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.gray-text {
+  color: #999;
+  margin-bottom: 50px;
+}
+
+#ingenieurConception {
+  color: #960099;
+}
+#chefProjet {
+  color: cyan;
+}
+
+#designer {
+  color: green;
+}
+
+#analyste {
+  color: pink;
+}
+
+#developpeur {
+  color: #ffb800;
+}
+#ingenieurProduction {
+  color: #0f056b;
+}
+
+.team-sectionEuge {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 50px;
+  flex-direction: row-reverse;
+}
+.team-sectionAlie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 50px;
+}
+
+.team-sectionRomain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 50px;
+}
+.team-sectionArthur {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 50px;
+}
+
+.team-sectionPierreAntoine {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 50px;
+  flex-direction: row-reverse;
+}
+
+.team-sectionHector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 50px;
+  flex-direction: row-reverse;
+}
+
+.team-member {
+  width: calc(50% - 20px);
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.team-member img {
+  width: 300px;
+  height: 300px;
+
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.text-left {
+  flex-grow: 1;
+  text-align: center;
+  line-height: 27px;
+}
+
+.text-right {
+  flex-grow: 1;
+  text-align: center;
+  line-height: 27px;
+}
