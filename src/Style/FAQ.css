@@ -14,7 +14,7 @@ h1 {
     font-size: 3.5em;
 }
 
-.quest, .form{
+.quests, .form{
     text-align: left;
     position: sticky;
 }
