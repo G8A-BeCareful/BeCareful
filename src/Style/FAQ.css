@@ -70,19 +70,11 @@ textarea{
     background-color: white;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #acacac;
-    max-height: 100px;
-    max-width: 100%;
+    height: 100px;
+    width: 100%;
 }
-/*button{
-    text-align: center;
-    background-color: #3358EA;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px #acacac;
-    max-height: 100px;
-}*/
+
 button{
-/* Button */
 
 /* Auto layout */
 display: flex;
@@ -90,31 +82,28 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 padding: 14px 32px;
-gap: 10px;
 
-position: absolute;
+position: relative;
 width: 190px;
 height: 62px;
-left: 46px;
-top: 511px;
-
+left: 50%;
+top: 5px;
 background: #3358EA;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 20px;
+border: none;
+border-radius: 10px;
+box-shadow: 5px 5px 5px #acacac;
 
 /* Envoyer */
 
-width: 76px;
-height: 24px;
+width: 100px;
+height: 30px;
 
 font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
 line-height: 24px;
-text-transform: capitalize;
-
-color: #FFFFFF;
+color: #3358EA;
 
 
 /* Inside auto layout */
@@ -122,3 +111,7 @@ flex: none;
 order: 0;
 flex-grow: 0;
 }
+
+/*A faire
+transition lors déploiement des réponses
+questions danns une bdd, et page faq les récup pour les afficher sur la page*/
