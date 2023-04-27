@@ -3,6 +3,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   z-index: 1;
+  animation: 3s linear 0.1s colorIt;
 }
 
 .container {
@@ -178,4 +179,8 @@ a {
     rgba(255, 0, 0, 0.12088585434173671) 0%,
     rgba(255, 255, 255, 1) 77%
   );
+}
+
+.bonjourDate {
+  margin-left: 2%;
 }

@@ -2,6 +2,7 @@ body {
   font-family: "Mven Pro", sans-serif;
   margin: 0;
   padding: 0;
+  animation: 3s linear 0.1s colorIt;
 }
 
 .topPage {

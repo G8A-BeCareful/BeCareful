@@ -3,6 +3,7 @@ body {
   position: relative;
   background: #ffffff;
   margin: 0;
+  animation: 3s linear 0.1s colorIt;
 }
 
 .partie1 p {

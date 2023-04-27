@@ -2,6 +2,7 @@ body {
   font-family: "Maven Pro", sans-serif;
   box-sizing: border-box;
   margin: 0;
+  animation: 3s linear 0.1s colorIt;
 }
 
 .forms {
