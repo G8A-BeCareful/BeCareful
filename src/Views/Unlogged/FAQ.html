@@ -1,13 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
-    <div class="center"></div>
-    <title>FAQ BeCareful</title>
-    <link href="../../Style/FAQ.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ</title>
     <link rel="stylesheet" type="text/css" href="../../Style/Header.css" />
     <link rel="stylesheet" type="text/css" href="../../Style/Footer.css" />
+    <link href="../../Style/FAQ.css" type="text/css" rel="stylesheet" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
@@ -23,7 +23,7 @@
           <a href="Page_Accueil.html" class="nav">Accueil</a>
           <a href="Notre_Produit.html" class="nav">Notre Produit</a>
           <a href="APropos.html" class="nav">À Propos</a>
-          <a href="" class="nav">Nous Contacter</a>
+          <a href="ContactezNous.html" class="nav">Nous Contacter</a>
         </div>
         <div class="header-right">
           <a href="Inscription.html" class="nav">S'Inscrire</a>
@@ -33,84 +33,103 @@
         </div>
       </div>
     </header>
-    <div class="center">
-      <h1> FAQ </h1>
-    </div>
-    <br /><br />
-    <h2>Questions fréquemment posées <br /><br /><br /></h2>
-    <nav>
-      <ul>
-        <li class="deroulant">
-          Quel type de chargeur est nécessaire ? &ensp;
-          <ul class="sous">
-            <li>Un chargeur usb android est requis</li>
-          </ul>
-        </li>
-      </ul>
+    <div class="contain">
+      <div class="titile">
+        <h1>FAQ</h1>
+      </div>
+      <div class="quests">
+        <h2>Questions fréquemment posées</h2>
+        <br />
 
-      <ul>
-        <li class="deroulant">
-          Notre produit est il résistant aux chocs ? &ensp;
-          <ul class="sous">
-            <li>
-              Afin d'assurer que les enfants portant notre montre puisse la garder le plus
-              longtemps possible, notre montre a été fabriquée dans des matériaux la
-              préservant le plus longtemps possible. Ces matériaux sont également
-              éco-responsables
-            </li>
-        </ul>
-      
-        <BR>
-        <ul>
-            <li class="deroulant"> Comment cela se passe en cas de perte de la montre ?
-                <ul class="sous">
-                    <li> Après nous avoir contacté, nous vous mettrons rapidement un nouvel appareil à disposition </li>
-                </ul>
+        <nav>
+          <ul>
+            <li class="deroulant">
+              Quel type de chargeur est nécessaire pour recharger l'appareil ?
+              <ul class="sous">
+                <li>Un chargeur usb android est requis</li>
+              </ul>
             </li>
           </ul>
-        </li>
-      </ul>
-    </nav>
-    </div>
 
-    <div>
-    <form method="get" action="">
-    <h2>
-        <label for="question"> Vous avez une question spécifique à nous poser ? </label><BR>
-        <textarea name="question" placeholder="Votre question" id="question"></textarea>
-    </h2>
-    </form>
-    <button><input type="submit" value="Envoyer"></button>
+          <br />
+          <ul>
+            <li class="deroulant">
+              Notre produit est il résistant aux chocs ?
+              <ul class="sous">
+                <li>
+                  Afin d'assurer que les enfants portant notre montre puisse la garder le
+                  plus longtemps possible, notre montre a été fabriquée dans des matériaux
+                  la préservant le plus longtemps possible. Ces matériaux sont également
+                  éco-responsables
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <br />
+          <ul>
+            <li class="deroulant">
+              Comment cela se passe en cas de perte de la montre ?
+              <ul class="sous">
+                <li>
+                  Après nous avoir contacté, nous vous mettrons rapidement un nouvel
+                  appareil à disposition
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <br />
+        </nav>
+      </div>
+
+      <div class="form">
+        <form method="get" action="">
+          <h2>
+            <label for="question">
+              Vous avez une question spécifique à nous poser ? </label
+            ><br />
+            <textarea
+              name="question"
+              placeholder="Votre question"
+              id="question"></textarea>
+          </h2>
+        </form>
+        <button>
+          Envoyer
+          <!--input type="submit" value="Envoyer"-->
+        </button>
+        <br />
+      </div>
     </div>
+    <footer>
+      <div class="footer">
+        <div class="listFooter">
+          <div>
+            <p class="title">BeCareful</p>
+            <a class="link" href="APropos.html"><p>Qui sommes-nous ?</p></a>
+            <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moupneaux</p>
+            <p>Horaires : Du lundi au samedi de 9h à 18h</p>
+            <a class="link" href="Notre_Produit.html"><p>Notre Produit</p></a>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p class="title">Aide</p>
+            <a class="link" href="FAQ.html"><p>FAQ</p></a>
+
+            <p>© BeCareful 2023</p>
+          </div>
+        </div>
+        <div>
+          <h3></h3>
+          <div>
+            <p class="title">Conditions D'utilisations</p>
+            <p>Conditions générales</p>
+            <p>Poptique de confidentialité</p>
+            <p>CGU</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
-  <footer>
-    <div class="footer">
-      <div class="listFooter">
-        <ul>
-          <li>BeCareful</li>
-          <li>Qui sommes-nous ?</li>
-          <li>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</li>
-          <li>Horaires : Du lundi au samedi de 9h à 18h</li>
-          <li>Notre Produit</li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li class="title">Aide</li>
-          <li>FAQ</li>
-          <li>Questions fréquents</li>
-          <li>© BeCareful 2023</li>
-        </ul>
-      </div>
-      <div>
-        <h3></h3>
-        <ul>
-          <li class="title">Conditions D'utilisations</li>
-          <li>Conditions générales</li>
-          <li>Politique de confidentialité</li>
-          <li>CGU</li>
-        </ul>
-      </div>
-    </div>
-  </footer>
 </html>

@@ -40,3 +40,13 @@ input::placeholder {
   font-size: 14px;
   font-family: "Maven Pro", sans-serif;
 }
+
+.firstRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.imgProfil {
+  margin-right: 2%;
+}

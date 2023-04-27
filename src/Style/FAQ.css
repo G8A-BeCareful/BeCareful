@@ -1,83 +1,100 @@
+body {
+  margin: 0;
+  font-family: "Maven Pro", sans-serif;
+  color: #7e7e7e;
+  background-color: #f4f4fc;
+}
 
-*{
-    margin: 10px;
-    padding: 0px;
-    font-family: 'Maven Pro', sans-serif;
-    font-size: 1em;
-    color: #7E7E7E;
-    background-color: #F4F4FC;
+.contain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 80%;
 }
 
 h1 {
-    text-align: center;
-    position: sticky;
-    font-size: 3.5em;
+  text-align: center;
+  font-size: 3.5em;
 }
 
-div{
-    text-align: left;
-    position: sticky;
+.quests,
+.form {
+  text-align: left;
 }
 
-nav{
-    width: 100%;
-    margin: 0 auto;
-    background-color: #F4F4FC;
-    position: sticky;
-    top: 0px;
+nav {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f4f4fc;
+  top: 0px;
 }
 
-nav ul{
-    list-style-type: none;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px #acacac; /* bleu 3358EA ou gris acacac*/
+nav ul {
+  list-style-type: none;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #acacac; /* bleu 3358EA ou gris acacac*/
 }
 
-nav ul li{
-    float: left;
-    background-color: white;
-    width: 94%;
-    text-align: left;
-    position: sticky;
+nav ul li {
+  float: left;
+  background-color: white;
+  width: 94%;
+  text-align: left;
+  /*font-weight: bold;*/
 }
 
-nav ul::after{
-    content: "";
-    display: table;
-    clear: both;
+nav ul::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-nav a{
-    display: block;
-    text-decoration: none;
-    color: white;
+nav a {
+  display: block;
+  text-decoration: none;
+  color: white;
 }
 
-.sous{
-    display: none;
-    background-color: white;
-    position: absolute left;
-    width: 100%;
-    box-shadow: 0px 0px 0px white;
+.sous {
+  display: none;
+  background-color: white;
+  font-weight: 100;
+  width: 100%;
+  box-shadow: 0px 0px 0px white;
 }
 
-nav > ul li:hover .sous{
-    display: block;
+nav > ul li:hover .sous {
+  display: block;
 }
 
-textarea{
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px #acacac;
-    height: 100px;
-    width: 100%;
+textarea {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #acacac;
+  height: 100px;
+  width: 100%;
 }
 
-button{
+button {
+  text-align: center;
+  background-color: #3358ea;
+  margin: 0 auto;
+  color: #ffffff;
+  position: relative;
+  width: 190px;
+  height: 40px;
+  left: 45%;
+  top: 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #acacac;
+}
+
+/*button{
 
 /* Auto layout */
-display: flex;
+/*display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
@@ -91,11 +108,11 @@ top: 5px;
 background: #3358EA;
 border: none;
 border-radius: 10px;
-box-shadow: 5px 5px 5px #acacac;
+box-shadow: 5px 5px 5px #acacac;*/
 
 /* Envoyer */
 
-width: 100px;
+/*width: 100px;
 height: 30px;
 
 font-family: 'Inter';
@@ -103,14 +120,13 @@ font-style: normal;
 font-weight: 400;
 font-size: 20px;
 line-height: 24px;
-color: #3358EA;
-
+color: #3358EA;*/
 
 /* Inside auto layout */
-flex: none;
+/*flex: none;
 order: 0;
 flex-grow: 0;
-}
+}*/
 
 /*A faire
 transition lors déploiement des réponses

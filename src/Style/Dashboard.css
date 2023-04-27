@@ -90,15 +90,14 @@ li {
 }
 
 .boxMeasures {
-  padding: 15px;
-  width: 80px;
-  height: 80px;
+  padding: 10px;
+  width: 90px;
+  height: 90px;
   background: #f4f4fc;
   box-shadow: 19.37px 19.37px 15px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
@@ -113,4 +112,31 @@ li {
   color: #f0a330;
   text-align: center;
   margin: 0;
+}
+
+.dotRed {
+  width: 2px;
+  height: 2px;
+  background-color: red;
+  padding: 3px;
+  border-radius: 50%;
+  align-self: end;
+}
+
+.dotOrange {
+  width: 2px;
+  height: 2px;
+  background-color: rgba(240, 163, 48, 0.95);
+  padding: 3px;
+  border-radius: 50%;
+  align-self: end;
+}
+
+.dotGreen {
+  width: 2px;
+  height: 2px;
+  background-color: #4fc93b;
+  padding: 3px;
+  border-radius: 50%;
+  align-self: end;
 }
