@@ -1,9 +1,9 @@
-body {
-  min-height: 100vh;
+footer {
   display: flex;
   flex-direction: column;
   color: #7e7e7e;
   font-family: "Maven Pro", sans-serif;
+  animation: 3s linear 0.1s colorIt;
 }
 
 ul {
@@ -34,4 +34,13 @@ ul li {
   display: flex;
   margin-top: auto;
   justify-content: space-between;
+}
+
+.link {
+  color: #7e7e7e;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
 }

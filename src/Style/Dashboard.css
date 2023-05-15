@@ -1,0 +1,143 @@
+body {
+  font-family: "Maven Pro", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  z-index: 1;
+  animation: 3s linear 0.1s colorIt;
+}
+
+.Box2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: #f4f4fc;
+}
+
+.boxInfo {
+  background: #ffffff;
+  box-shadow: 19.37px 19.37px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.boxConseil {
+  padding: 15px;
+  margin-top: 2%;
+  background: #ffffff;
+  box-shadow: 19.37px 19.37px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.TheTitle {
+  margin-left: 2%;
+  display: flex;
+  font-size: 15px;
+  flex-wrap: wrap;
+}
+
+.boxConseil svg {
+  margin-right: 2%;
+  width: 10%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  color: green;
+}
+
+li {
+  list-style: inside;
+}
+
+.LesParaf {
+  display: flex;
+  flex-direction: row;
+}
+
+.paraf1 {
+  width: 50%;
+}
+
+.paraf2 {
+  width: 50%;
+}
+
+.col_1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.roww_2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+.roww_1 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+  justify-content: space-between;
+}
+
+.boxMeasures {
+  padding: 10px;
+  width: 90px;
+  height: 90px;
+  background: #f4f4fc;
+  box-shadow: 19.37px 19.37px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.littleTitle {
+  margin-top: 0;
+  margin-bottom: 10%;
+  color: #3358ea;
+  text-align: center;
+}
+
+.commentaire {
+  color: #f0a330;
+  text-align: center;
+  margin: 0;
+}
+
+.dotRed {
+  width: 2px;
+  height: 2px;
+  background-color: red;
+  padding: 3px;
+  border-radius: 50%;
+  align-self: end;
+}
+
+.dotOrange {
+  width: 2px;
+  height: 2px;
+  background-color: rgba(240, 163, 48, 0.95);
+  padding: 3px;
+  border-radius: 50%;
+  align-self: end;
+}
+
+.dotGreen {
+  width: 2px;
+  height: 2px;
+  background-color: #4fc93b;
+  padding: 3px;
+  border-radius: 50%;
+  align-self: end;
+}

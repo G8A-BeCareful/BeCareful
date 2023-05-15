@@ -1,14 +1,14 @@
 body {
   font-family: "Maven Pro", sans-serif;
   box-sizing: border-box;
-  min-height: 100vh;
   margin: 0;
+  animation: 3s linear 0.1s colorIt;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: 20px 10px;
   background: #ffffff;
   box-shadow: 0px 4px 36px -5px rgba(51, 88, 234, 0.15);
@@ -24,7 +24,6 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
   gap: 50px;
 }
 
@@ -36,6 +35,10 @@ body {
   font-size: 13px;
   line-height: 25px;
   border-radius: 4px;
+}
+
+.nav:hover {
+  color: #3358ea;
 }
 
 .button {
@@ -50,17 +53,33 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-size: 13px;
+  transition: box-shadow 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: aliceblue;
+  color: #3358ea;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .buttonPlace {
   margin-left: 50px;
 }
+
 .header a.logo {
   font-size: 23px;
   font-weight: bold;
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
   color: black;
-  margin-left: 5%;
+  margin-left: 1%;
+}
+
+.logoImg {
+  margin-right: 10px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 500px) {
