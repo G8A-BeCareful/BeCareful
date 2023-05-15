@@ -80,5 +80,22 @@ body {
 
 .bigTitle {
   font-size: 35px;
+  text-align: center;
   color: #7e7e7e;
+}
+@media all and (max-width: 830px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .columnBubble{
+    order: 1;
+    margin-top: 1%;
+  }
+  .box{
+    width: 140%;
+  }
+ 
 }
