@@ -81,11 +81,30 @@ body {
   margin-right: 10px;
   object-fit: contain;
 }
+label, #toggle {
+    display: none;
+}
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 970px) {
   .header a {
     float: none;
     display: block;
     text-align: left;
+  }
+  .logo{
+    order: 2;
+  }
+  .navbar{
+    display: none;
+    flex-direction: column;
+  }
+  label{
+    display: flex;
+  }
+  .header-right{
+    display: none;
+  }
+  #toggle:checked + .navbar {
+    display: flex;
   }
 }
