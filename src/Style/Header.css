@@ -13,7 +13,10 @@ body {
   background: #ffffff;
   box-shadow: 0px 4px 36px -5px rgba(51, 88, 234, 0.15);
 }
-
+.inscripConnexion2{
+  display: none;
+  
+}
 .header-right {
   display: flex;
   justify-self: flex-end;
@@ -40,7 +43,9 @@ body {
 .nav:hover {
   color: #3358ea;
 }
-
+.inscripConnexion2:hover{
+  color:#3358ea;
+}
 .button {
   color: white;
   text-decoration: none;
@@ -86,25 +91,39 @@ label, #toggle {
 }
 
 @media screen and (max-width: 970px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
   .logo{
     order: 2;
   }
+  .inscripConnexion2{
+    display: flex;
+    text-decoration: none;
+    color:#7e7e7e;
+    padding: 12px;
+    gap: 25px;
+  }
   .navbar{
-    display: none;
+    display: flex;
     flex-direction: column;
+    position: fixed;
+    left:-100%;
+    top: 75px;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    width: 40%;
+    height: 50%;
+    gap: 25px;
+    transition: left 0.5s ease-in-out;
   }
   label{
-    display: flex;
+    display: block;
   }
   .header-right{
     display: none;
   }
-  #toggle:checked + .navbar {
-    display: flex;
+  #toggle:checked ~ .navbar {
+    left: 0;
+  }
+  .navbar a{
+    font-size: 110%;
   }
 }
