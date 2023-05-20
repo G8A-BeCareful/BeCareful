@@ -48,7 +48,9 @@ form .Logop {
   display: flex;
   flex-direction: column;
 }
-
+.arrow{
+  width: 700px;
+}
 .rowLogo {
   display: flex;
   flex-direction: row;
@@ -119,6 +121,7 @@ svg {
   color: #3358ea;
 }
 
+
 .seConnect {
   margin-top: 20px;
   padding: 15px 25px;
@@ -138,8 +141,26 @@ svg {
 .boutonConnect {
   margin-top: 6%;
 }
-@media all and (max-width: 850px) {
+@media all and (max-width: 835px) {
   .boxBlue{
     display: none;
+  }
+  .mainBox {
+    background-color: transparent;
+  }
+  
+  form{
+    position: absolute;
+    left: 10%;
+    right: 10%;
+  }
+  .boutonConnect{
+    padding-top: 20px;
+  }
+  svg{
+    color: #f5f5f5;
+  }
+  svg:hover{
+    color: #3358ea;
   }
 }
