@@ -280,3 +280,9 @@ button:first-child {
 .arrow:hover {
   background: #eee;
 }
+@media all and (max-width: 1000px) {
+  h3,h1{
+    display: none;
+  }
+  
+}
