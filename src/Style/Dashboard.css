@@ -74,21 +74,34 @@ li {
   justify-content: space-between;
   margin-left: 2%;
   margin-right: 2%;
+  
 }
 
 .roww_2 {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 100px;
   margin-bottom: 2%;
+  flex-wrap: wrap;
 }
 
 .roww_1 {
   display: flex;
   flex-direction: row;
   margin-bottom: 5%;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 100px;
+  flex-wrap: wrap;
 }
+
+.boxType{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap:20px;
+}
+
 
 .boxMeasures {
   padding: 10px;
@@ -141,3 +154,24 @@ li {
   border-radius: 50%;
   align-self: end;
 }
+@media all and (max-width: 970px){
+  .col_1{
+    display: flex;
+    gap: 80px;
+  }
+}
+@media all and (max-width: 730px){
+  .LesParaf{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .LesParaf svg{
+    width: 20%;
+  }
+  .LesParaf ul li{
+    width: 200%;
+  }
+}
+
+
