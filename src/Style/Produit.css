@@ -19,6 +19,7 @@ body {
   width: 50%;
   margin-top: 5%;
   margin-bottom: 1%;
+  gap:30px;
 }
 
 .columnImg {

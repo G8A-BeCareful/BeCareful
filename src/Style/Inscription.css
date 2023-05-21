@@ -157,7 +157,7 @@ svg {
 .boutonConnect {
   margin-top: 40px;
 }
-@media all and (max-width: 835px) {
+@media all and (max-width: 1065px) {
   .boxBlue{
     display: none;
   }

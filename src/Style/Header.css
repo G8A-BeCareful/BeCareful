@@ -86,11 +86,11 @@ body {
   margin-right: 10px;
   object-fit: contain;
 }
-label, #toggle {
+.menuderoulant, #toggle {
     display: none;
 }
 
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 1000px) {
   .logo{
     order: 2;
   }
@@ -114,8 +114,9 @@ label, #toggle {
     gap: 25px;
     transition: left 0.5s ease-in-out;
   }
-  label{
+  .menuderoulant{
     display: block;
+    font-size: 35px;
   }
   .header-right{
     display: none;
@@ -125,5 +126,8 @@ label, #toggle {
   }
   .navbar a{
     font-size: 110%;
+  }
+  .menuderoulant:hover{
+    color: #3358ea;
   }
 }

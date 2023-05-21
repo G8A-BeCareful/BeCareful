@@ -120,7 +120,7 @@ h1 {
 .titleAll {
   font-size: 40px;
 }
-@media all and (max-width: 830px) {
+@media all and (max-width: 955px) {
   .team-sectionAlie {
     display: flex;
     flex-direction: column;

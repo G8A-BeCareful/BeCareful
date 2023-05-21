@@ -35,8 +35,8 @@ body {
 }
 
 .menuP {
-  font-size: 14px;
-  margin-left: 1%;
+  font-size: 25px;
+  margin-left: 10px;
 }
 
 .row_menu {
@@ -220,6 +220,10 @@ a {
   }
   .profile_menu svg{
     width: 70%;
+  }
+  .menuP{
+    font-size: 20px;
+    margin-left: 10px;
   }
 }
 @media all and (max-width: 970px) {
