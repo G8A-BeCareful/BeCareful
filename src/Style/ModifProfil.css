@@ -51,3 +51,13 @@ input::placeholder {
 .imgProfil {
   margin-right: 2%;
 }
+@media all and (max-width: 1080px){
+  .twoForm{
+    display: flex;
+    flex-direction: column;
+  }
+  .allForms{
+    width: 70%;
+  }
+  
+}

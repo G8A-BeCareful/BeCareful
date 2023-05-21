@@ -228,3 +228,8 @@ a {
     height: 60px;
   }
 }
+@media all and (max-width: 1080px){
+  .button{
+    width: 100px;
+  }
+}
