@@ -3,6 +3,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   animation: 3s linear 0.1s colorIt;
+  min-width: 850px;
 }
 
 .forms {
