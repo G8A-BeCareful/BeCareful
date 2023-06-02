@@ -79,12 +79,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
           <h1>Inscrivez vous !</h1>
           <div class="inputs">
-            <label for="prenom"></label>
-            <input type="text" name="prenom" placeholder="Prénom" />
+            <div class='input_spe'>
+              <label for="prenom"></label>
+              <input type="text" name="prenom" placeholder="Prénom" />
 
-            <label for="nom"></label>
-            <input type="text" name="nom" placeholder="Nom" />
-
+              <label for="nom"></label>
+              <input type="text" name="nom" placeholder="Nom" />
+            </div>
             <label for="email"></label>
             <input type="email" name="email" placeholder="Adresse e-mail" />
 
@@ -102,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
           <p class="inscription">
             Vous avez déjâ un compte ?
-            <a class="Inscris" href="Connexion.html"><span>Connectez-vous</span></a>
+            <a class="Inscris" href="Connexion.php"><span>Connectez-vous</span></a>
           </p>
         </form>
       </div>

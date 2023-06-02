@@ -6,12 +6,6 @@ try {
   $conn = new PDO("mysql:host=localhost", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND=> 'SET NAMES utf8',65536));
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-  //SQL
-  require_once('exec.php');
-  $conn=executeSqlFile();
-
-
   //erreurs ?
 } catch(PDOException $e) {
   echo $sql . "<br>" . $e->getMessage();
@@ -69,19 +63,9 @@ try {
           </div>
         </div>
         <form>
-<<<<<<< HEAD:src/Views/Unlogged/Connexion.html
-          <div class="rowLogo">
-            <img src="../../img/Logo-becareful.png" alt="Logo" class="imgLogo" />
-            <h2 class="becareful">Becareful</h2>
-=======
-          <div class="Logop">
-            <div class="arrow"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-             </div>    
+          <div class="Logop">  
             <div class="Logoi"><img src="../../img/Logo-becareful.png" alt="Logo" /></div>
             <div class="Logoc"><h2 class="becareful">Becareful</h2></div>
->>>>>>> Arthur:src/Views/Unlogged/Connexion.php
           </div>
           <h1>Connectez-vous !</h1>
           <div class="inputs">
@@ -100,7 +84,7 @@ try {
           </div>
           <p class="inscription">
             Vous n'avez pas encore de compte ?
-            <a class="Inscris" href="Inscription.html"><span>Inscrivez-vous</span></a>
+            <a class="Inscris" href="Inscription.php"><span>Inscrivez-vous</span></a>
           </p>
         </form>
       </div>
