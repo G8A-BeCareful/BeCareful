@@ -190,3 +190,8 @@ svg {
     color: #3358ea;
   }
 }
+@media all and (max-width: 699.20px) {
+  .content{
+    width: inherit;
+  }
+}
