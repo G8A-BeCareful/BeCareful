@@ -1,4 +1,6 @@
 <?php
+//Mettre id="BPM", id="CO2", id="HUM", id="TEMP", id="DB" dans les div commentaire avant chaque valeur (<p class="commentaire" id="BPM"> BPM</p><a class="commentaire"> BPM</a> au lieu de <p class="commentaire">52 BPM</p>)
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -12,58 +14,43 @@ if ($conn->connect_error) {
     die("Erreur de connexion : " . $conn->connect_error);
 }
 
-$BPM = "SELECT Valeur FROM bpm";
-$CO2 = "SELECT Valeur FROM co2";
-$HUM = "SELECT Valeur FROM humidity";
-$TEMP = "SELECT Valeur FROM temperature";
-$DB = "SELECT Valeur FROM noise";
+// Définition des requêtes dans un tableau
+$queries = array(
+    "Bpm" => "SELECT Valeur FROM bpm",
+    "Co2" => "SELECT Valeur FROM co2",
+    "Hum" => "SELECT Valeur FROM humidity",
+    "Temp" => "SELECT Valeur FROM temperature",
+    "Db" => "SELECT Valeur FROM noise"
+);
 
-$result1 = $conn->query($BPM);
-$result2 = $conn->query($CO2);
-$result3 = $conn->query($HUM);
-$result4 = $conn->query($TEMP);
-$result5 = $conn->query($DB);
-
-// Vérifier les résultats et générer un tableau associatif pour les questions et réponses
 $data = array();
 
-if ($result1->num_rows > 0) {
-    while ($row1 = $result1->fetch_assoc()) {
-        $Bpm = $row1['Valeur'];
-        $data[] = array('Bpm' => $Bpm);
-    }
-}
+// Exécution des requêtes et récupération des données
+foreach ($queries as $key => $query) {
+    $result = $conn->query($query);
 
-if ($result2->num_rows > 0) {
-    while ($row2 = $result2->fetch_assoc()) {
-        $Co2 = $row2['Valeur'];
-        $data[] = array('Co2' => $Co2);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $value = $row['Valeur'];
+            $data[$key][] = array($key => $value);
+        }
     }
 }
-
-if ($result3->num_rows > 0) {
-    while ($row3 = $result3->fetch_assoc()) {
-        $Hum = $row3['Valeur'];
-        $data[] = array('Hum' => $Hum);
-    }
-}
-
-if ($result4->num_rows > 0) {
-    while ($row4 = $result4->fetch_assoc()) {
-        $Temp = $row4['Valeur'];
-        $data[] = array('Temp' => $Temp);
-        echo $data;
-    }
-}
-
-if ($result5->num_rows > 0) {
-    while ($row5 = $result5->fetch_assoc()) {
-        $Db = $row5['Valeur'];
-        $data[] = array('Db' => $Db);
-    }
-}
-echo $data;
 
 // Fermeture de la connexion à la base de données
 $conn->close();
 ?>
+
+<script>
+    var data = <?php echo json_encode($data); ?>;
+    var con1 = document.getElementById("BPM");
+    var con2 = document.getElementById("CO2");
+    var con3 = document.getElementById("HUM");
+    var con4 = document.getElementById("TEMP");
+    var con5 = document.getElementById("DB");
+    con1.innerHTML = data["Bpm"][1].Bpm;
+    con2.innerHTML = data["Co2"][1].Co2;
+    con3.innerHTML = data["Hum"][1].Hum;
+    con4.innerHTML = data["Temp"][1].Temp;
+    con5.innerHTML = data["Db"][1].Db;
+</script>
