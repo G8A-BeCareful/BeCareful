@@ -1,3 +1,35 @@
+<?php
+//require 'mailer.php';
+session_start();
+$servername = "localhost";
+$username = "root"; // Remplacez par votre nom d'utilisateur de la base de données
+$password = ""; // Remplacez par votre mot de passe de la base de données
+$dbname = "becareful";
+
+
+// try {
+//     $dbh = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+//     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//     $stmt = $dbh->prepare("SELECT email, name FROM users");
+//     $stmt->execute();
+//     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//     foreach ($users as $user) {
+//         $recipientEmail = $user['email'];
+//         $recipientName = $user['name'];
+
+//         sendConfirmationEmail($recipientEmail, $recipientName);
+
+//         sendPasswordResetEmail($recipientEmail, 'https://example.com/reset-password');
+//     }
+
+//     $dbh = null;
+// } catch (PDOException $e) {
+//     echo 'Database connection failed: ' . $e->getMessage();
+// }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -91,3 +123,4 @@
     </footer>
   </body>
 </html>
+

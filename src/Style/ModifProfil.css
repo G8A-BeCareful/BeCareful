@@ -1,0 +1,64 @@
+body {
+  font-family: "Maven Pro", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  animation: 3s linear 0.1s colorIt;
+  min-width: 850px;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+}
+
+.twoForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.allForms {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.formsSpe {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+}
+
+.input-container {
+  margin-top: 3px;
+  border: 1px solid #3358ea;
+  border-radius: 5px;
+  padding: 10px;
+  background: #f4f4fc;
+}
+
+input::placeholder {
+  font-size: 14px;
+  font-family: "Maven Pro", sans-serif;
+}
+
+.firstRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.imgProfil {
+  margin-right: 2%;
+}
+@media all and (max-width: 1080px){
+  .twoForm{
+    display: flex;
+    flex-direction: column;
+  }
+  .allForms{
+    width: 70%;
+  }
+  
+}
