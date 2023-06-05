@@ -38,12 +38,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $user_id = $row['id'];
         $prenom = $row['firstname'];
         $nom = $row['lastname'];
+        $email = $row['email'];
+        $birthdate = $row['birthdate'];
         
     
         // Stocker les informations de l'utilisateur dans la session
         $_SESSION['user_id'] = $user_id;
         $_SESSION['nom'] = $nom;
         $_SESSION['prenom'] = $prenom;
+        $_SESSION['email'] = $email;
+        $_SESSION['birthdate'] = $birthdate;
         header("Location: ../Logged/Dashboard.php");
         $stmt->close();
         $conn->close();
