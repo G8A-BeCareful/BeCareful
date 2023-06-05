@@ -62,7 +62,7 @@ if (isset($_POST['delete_account'])) {
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="../../Style/Settings.css" />
+      href="../../Style/Settings.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../../Style/Footer.css" />
     <link
       rel="stylesheet"
