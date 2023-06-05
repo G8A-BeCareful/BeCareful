@@ -42,15 +42,22 @@ $conn->close();
 ?>
 
 <script>
-    var data = <?php echo json_encode($data); ?>;
-    var con1 = document.getElementById("BPM");
-    var con2 = document.getElementById("CO2");
-    var con3 = document.getElementById("HUM");
-    var con4 = document.getElementById("TEMP");
-    var con5 = document.getElementById("DB");
-    con1.innerHTML = data["Bpm"][1].Bpm;
-    con2.innerHTML = data["Co2"][1].Co2;
-    con3.innerHTML = data["Hum"][1].Hum;
-    con4.innerHTML = data["Temp"][1].Temp;
-    con5.innerHTML = data["Db"][1].Db;
+// Génère un nombre aléatoire entre 0 et 4
+function getRandomNumber() {
+  return Math.floor(Math.random() * 5);
+}
+var randomNumber = getRandomNumber();
+
+var data = <?php echo json_encode($data); ?>;
+var con1 = document.getElementById("BPM");
+var con2 = document.getElementById("CO2");
+var con3 = document.getElementById("HUM");
+var con4 = document.getElementById("TEMP");
+var con5 = document.getElementById("DB");
+
+con1.innerHTML = data["Bpm"][randomNumber].Bpm;
+con2.innerHTML = data["Co2"][randomNumber].Co2;
+con3.innerHTML = data["Hum"][randomNumber].Hum;
+con4.innerHTML = data["Temp"][randomNumber].Temp;
+con5.innerHTML = data["Db"][randomNumber].Db;
 </script>
