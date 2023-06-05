@@ -173,6 +173,11 @@ svg {
 .Inscris:hover {
   text-decoration: underline;
 }
+
+.erreur {
+  color: red;
+}
+
 @media all and (max-width: 1065px) {
   .boxBlue {
     display: none;

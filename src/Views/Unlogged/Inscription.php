@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <h1>Inscrivez-vous !</h1>
             <?php if (isset($erreur)): ?>
-                <p class="erreur"><?php echo $erreur; ?></p>
+                <p style="color:red; text-align:center"><?php echo $erreur; ?></p>
             <?php endif; ?>
             <div class="inputs">
                 <div class='input_spe'>
