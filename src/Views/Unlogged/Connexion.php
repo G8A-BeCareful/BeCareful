@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $erreur = "";
 
   if (empty($email) || empty($pass)) {
-      $erreur = "Please fill in all the fields.";
+      $erreur = "Veuillez remplir tous les champs.";
     } else if (isset($valider)){
       $servername = "localhost";
       $username = "root";
@@ -19,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       // Check connection
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
+          $erreur = "Erreur de connexion à la base de donnée.";
+          exit();
       }
 
       $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND mdp=? LIMIT 1");
@@ -91,6 +93,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
             </div>
             <h1>Connectez-vous !</h1>
+            <?php if (isset($erreur)): ?>
+                <p class="erreur"><?php echo $erreur; ?></p>
+            <?php endif; ?>
             <div class="inputs">
                 <label for="email"></label>
                 <input type="text" name="email" placeholder="Nom d'utilisateur"/>

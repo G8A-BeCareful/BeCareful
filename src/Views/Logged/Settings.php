@@ -24,6 +24,8 @@ if (isset($_POST['delete_account'])) {
     // Check connection
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
+        $erreur = "Erreur de connexion à la base de donnée.";
+        exit();
     }
  
     // Attempt insert query execution
@@ -36,7 +38,7 @@ if (isset($_POST['delete_account'])) {
       header("Location: ../Unlogged/Page_Accueil.html");
       exit();
     } else{
-      echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+      $erreur = "Erreur d'envoie de données. Veuillez réessayer ultérieurement.";
     }
 
   // Close connection
@@ -48,6 +50,13 @@ if (isset($_POST['delete_account'])) {
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <script>
+        function deleteAccount() {
+            if (confirm("Êtes-vous sûr de vouloir supprimer votre compte ?")) {
+                document.getElementById("deleteForm").submit();
+            }
+        }
+    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Paramètres</title>
@@ -231,12 +240,18 @@ if (isset($_POST['delete_account'])) {
             <div class="otherRow">
               <h3 class="titleSettings">Supprimer définitivement le compte</h3>
               <div class="buttonPlace1">
-                <a href="#" class="button12">Supprimer</a>
+                <a onclick="deleteAccount()" href="#" class="button12">Supprimer</a>
               </div>
+              <form id="deleteForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                    <input type="hidden" name="delete_account">
+              </form>
             </div>
             <div class="buttonPlace">
               <a href="#" class="button13">Confirmer</a>
             </div>
+            <?php if (isset($erreur)): ?>
+                <p class="erreur"><?php echo $erreur; ?></p>
+            <?php endif; ?>
           </div>
         </div>
       </div>
