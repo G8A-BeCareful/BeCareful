@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Admin FAQ</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Administration FAQ</h1>
+
+  <div id="faq-container">
+    <!-- Exemple de question/réponse -->
+    <div class="faq-block">
+      <div class="question">Question 1</div>
+      <div class="answer">Réponse 1</div>
+      <div class="actions">
+        <button class="modifyButton">Modifier</button>
+        <button class="deleteButton">Supprimer</button>
+      </div>
+    </div>
+
+    <!-- Exemple d'une autre question/réponse -->
+    <div class="faq-block">
+      <div class="question">Question 2</div>
+      <div class="answer">Réponse 2</div>
+      <div class="actions">
+        <button class="modifyButton">Modifier</button>
+        <button class="deleteButton">Supprimer</button>
+      </div>
+    </div>
+
+    <!-- Ajouter de nouvelles questions/réponses ici -->
+  </div>
+
+    <button  id="add-btn" onclick="addQuestion()">Ajouter une question et une réponse</button>
+
+  
+  <script>
+    // Function to add a new question and answer block
+    function addQuestion() {
+      var container = document.getElementById("faq-container");
+
+      // Create the question block
+      var questionBlock = document.createElement("div");
+      questionBlock.classList.add("faq-block");
+
+      // Create the question element
+      var questionElement = document.createElement("div");
+      questionElement.classList.add("faq-question");
+      questionElement.textContent = "Nouvelle question";
+
+      // Create the answer element
+      var answerElement = document.createElement("div");
+      answerElement.textContent = "Nouvelle réponse";
+
+      // Create the actions for the question block
+      var actionsElement = document.createElement("div");
+      actionsElement.classList.add("faq-actions");
+
+      // Create the modify button
+      
+      var modifyButton = document.createElement("button");
+      modifyButton.textContent = "Modifier";
+      modifyButton.addEventListener("click", function() {
+        var newQuestion = prompt("Entrez la nouvelle question :", questionElement.textContent);
+        if (newQuestion !== null) {
+          questionElement.textContent = newQuestion;
+        }
+        var newAnswer = prompt("Entrez la nouvelle réponse :", answerElement.textContent);
+        if (newAnswer !== null) {
+          answerElement.textContent = newAnswer;
+        }
+      });
+
+      // Create the delete button
+      var deleteButton = document.createElement("button");
+      deleteButton.textContent = "Supprimer";
+      deleteButton.addEventListener("click", function() {
+        container.removeChild(questionBlock);
+      });
+
+      // Append question, answer, and actions elements to the question block
+      questionBlock.appendChild(questionElement);
+      questionBlock.appendChild(answerElement);
+      actionsElement.appendChild(modifyButton);
+      actionsElement.appendChild(deleteButton);
+      questionBlock.appendChild(actionsElement);
+
+      // Append the question block to the container
+      container.appendChild(questionBlock);
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
