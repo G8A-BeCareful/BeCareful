@@ -6,12 +6,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $userPassword = $_POST["password"];
   $confirmationEmail = $_POST["confirmationEmail"];
   $confirmPassword = $_POST["confirmPassword"];
+  $uppercase = preg_match('@[A-Z]@', $userPassword);
+  $lowercase = preg_match('@[a-z]@', $userPassword);
+  $number    = preg_match('@[0-9]@', $userPassword);
+  $specialChars = preg_match('@[^\w]@', $userPassword);
   if (empty($prenom) || empty($nom) || empty($email) || empty($userPassword)) {
-    $erreur = "Please fill in all the fields.";
+    $erreur = "Veuillez remplir tous les champs.";
+  } else if (!preg_match('/^[A-Za-zéèêëïîôöàäâùüûçñÉÈÊËÏÎÔÖÀÄÂÙÜÛÇÑ\s-]{2,}$/u', $prenom) || !preg_match('/^[A-Za-zéèêëïîôöàäâùüûçñÉÈÊËÏÎÔÖÀÄÂÙÜÛÇÑ\s-]{2,}$/u', $nom)) {
+    $erreur = "Format de prénom ou de nom invalide.";
+  } else if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($userPassword) < 8) {
+    $erreur = "Le mot de passe doit comporter au moins 8 caractères, inclure au moins une lettre majuscule, un chiffre et un caractère spécial.";
+  } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $erreur = "Format d'email invalide.";
   } elseif ($email !== $confirmationEmail) {
-    $erreur = "Emails do not match.";
+    $erreur = "Les adresses e-mail ne correspondent pas.";
   } elseif ($userPassword !== $confirmPassword) {
-    $erreur = "Passwords do not match.";
+    $erreur = "Les mots de passe ne correspondent pas.";
   } else {
     /* Attempt MySQL server connection. Assuming you are running MySQL
     server with default setting (user 'root' with no password) */
@@ -20,13 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Check connection
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
+        $erreur = "Erreur de connexion à la base de donnée.";
+        exit();
     }
  
     // Attempt insert query execution
     $sql = "INSERT INTO Users (firstname, lastname, email, mdp) VALUES ('$prenom', '$nom', '$email', '$userPassword')";
 
     if(mysqli_query($link, $sql)){
-        echo "Records inserted successfully.";
         // Détruire les anciennes données de session
         session_unset();
         session_destroy();
@@ -46,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: ../Logged/Dashboard.php");
         exit();
     } else{
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+        $erreur = "Erreur d'envoie de données. Veuillez réessayer ultérieurement.";
     }
  
     // Close connection
@@ -60,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Formulaire de connexion</title>
+    <title>Formulaire d'inscription</title>
     <link rel="stylesheet" type="text/css" href="../../Style/Inscription.css"/>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
@@ -84,6 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <h2 class="becareful">Becareful</h2>
             </div>
             <h1>Inscrivez-vous !</h1>
+            <?php if (isset($erreur)): ?>
+                <p class="erreur"><?php echo $erreur; ?></p>
+            <?php endif; ?>
             <div class="inputs">
                 <div class='input_spe'>
                     <label for="prenom"></label>

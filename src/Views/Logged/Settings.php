@@ -24,6 +24,8 @@ if (isset($_POST['delete_account'])) {
     // Check connection
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
+        $erreur = "Erreur de connexion à la base de donnée.";
+        exit();
     }
  
     // Attempt insert query execution
@@ -36,7 +38,7 @@ if (isset($_POST['delete_account'])) {
       header("Location: ../Unlogged/Page_Accueil.html");
       exit();
     } else{
-      echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+      $erreur = "Erreur d'envoie de données. Veuillez réessayer ultérieurement.";
     }
 
   // Close connection
@@ -260,6 +262,9 @@ if (isset($_POST['delete_account'])) {
             <div class="buttonPlace">
               <a href="#" class="button13">Confirmer</a>
             </div>
+            <?php if (isset($erreur)): ?>
+                <p class="erreur"><?php echo $erreur; ?></p>
+            <?php endif; ?>
           </div>
         </div>
       </div>

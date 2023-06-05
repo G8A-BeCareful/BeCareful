@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <label for="Objet"></label>
           <textarea class="input-container1" name="question" placeholder="Votre question ici..."></textarea>
           <?php if (isset($message)): ?>
-            <p class="confirmation-message"><?php echo $message; ?></p>
+            <p class="confirmation"><?php echo $message; ?></p>
           <?php endif; ?>
           <div class="buttonWhere">
            <a href="#" onclick="document.querySelector('form').submit();" class="button25">Envoyer</a>
