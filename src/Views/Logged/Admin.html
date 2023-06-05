@@ -51,12 +51,8 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="../../Style/Dashboard.css" />
+    <title>Page Administrateur</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../Style/Admin.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../../Style/Footer.css" />
     <link
       rel="stylesheet"
@@ -136,13 +132,19 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
           </div>
           <div class="row_menu">
             <a class="row_menu" href="Admin.html"
-              ><svg xmlns="http://www.w3.org/2000/svg" fill="none" 
-              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
-              class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" 
-  d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 
   0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
-</svg>
+              </svg>
 
               <h3>Administrateur</h3></a
             >
@@ -170,7 +172,10 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
       <div class="column2">
         <div class="section_haut">
           <div class="bonjourDate">
-            <h2 class="bonjour">Bonjour <?php echo $prenom . ' ' . $nom; ?></h2>
+            <h2 class="bonjour">
+              Bonjour
+              <?php echo $prenom . ' ' . $nom; ?>
+            </h2>
             <h5>Jeudi 27 Avril 2023</h5>
           </div>
           <div class="profilButton">
@@ -192,112 +197,10 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
           </div>
         </div>
         <div class="bgPage">
-          <div class="boxInfo">
-            <h4 class="TheTitle">Vos dernières mesures</h4>
-            <div class="col_1">
-              <div class="roww_1">
-                <div class="boxType">
-                  <img class="stpicture" src="../../img/image16.png" alt="heart" />
-                  <div class="boxMeasures">
-                    <div class="dotRed"></div>
-                    <h6 class="littleTitle">Fréquence cardiaque</h6>
-                    <p class="commentaire" id="bpm">88 BPM</p>
-                    <h6 class="littleTitle"></h6>
-                  </div>
-                </div>
-                <div class="boxType">
-                  <img class="stpicture" src="../../img/image13.png" alt="eau" />
-                  <div class="boxMeasures">
-                    <div class="dotGreen"></div>
-                    <h6 class="littleTitle">Humidité</h6>
-                    <p class="commentaire" id="hum">52 %</p>
-                    <h6 class="littleTitle"></h6>
-                  </div>
-                </div>
-                <div class="boxType">
-                  <img class="stpicture" src="../../img/image15.png" alt="casque" />
-                  <div class="boxMeasures">
-                    <div class="dotOrange"></div>
-                    <h6 class="littleTitle">Audio</h6>
-                    <p class="commentaire" id="db">40 dB</p>
-                    <h6 class="littleTitle"></h6>
-                  </div>
-                </div>
-              </div>
-              <div class="roww_2">
-                <div class="boxType">
-                  <img class="ndpicture" src="../../img/image2.png" alt="cloud CO2" />
-                  <div class="boxMeasures">
-                    <div class="dotGreen"></div>
-                    <h6 class="littleTitle">CO2</h6>
-                    <p class="commentaire" id="co2">368</p>
-                    <h6 class="commentaire">Particules par millions</h6>
-                  </div>
-                </div>
-                <div class="boxType">
-                  <img class="ndpicture" src="../../img/image14.png" alt="thermomètre" />
-                  <div class="boxMeasures">
-                    <div class="dotGreen"></div>
-                    <h6 class="littleTitle">Température</h6>
-                    <p class="commentaire" id="temp">24°C</p>
-                    <h6 class="littleTitle"></h6>
-                  </div>
-                </div>
-                <div class="boxType">
-                  <img class="ndpicture" src="../../img/clock.png" alt="Horloge" />
-                  <div class="boxMeasures">
-                    <div class="dotGreen"></div>
-                    <h6 class="littleTitle">Temps depuis dernières mesures</h6>
-                    <p class="commentaire" id="temps">16</p>
-                    <h6 class="commentaire">minutes</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="boxConseil">
-            <h4 class="TheTitle">Conseils de la journée</h4>
-            <div class="LesParaf">
-              <div class="paraf1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <ul>
-                  <li>Vous n'avez pas été soumis à beaucoup de CO2</li>
-                  <li>La température ambiante est stable et accceptable</li>
-                  <li>Le niveau d'humidité est dans la moyenne</li>
-                </ul>
-              </div>
-              <div class="paraf2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <ul>
-                  <li>
-                    Pensez à calmer votre coeur en pratiquant des exercices de cohérence
-                    cardiaque
-                  </li>
-                  <li>Essayez de rester plus souvent éloigné des lieux bruyants</li>
-                </ul>
-              </div>
+          <div class="columnAll">
+            <div class="firstRow">
+              <img class="imgProfil" src="../../img/image 18.png" alt="Profil" />
+              <h1>Administrateur</h1>
             </div>
           </div>
         </div>
@@ -318,7 +221,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
           <div class="BeCareful">
             <p class="titre2">Aide</p>
             <a class="link" href="FAQ.html"><p>FAQ</p></a>
-  
+
             <p>© BeCareful 2023</p>
           </div>
         </div>
@@ -326,9 +229,9 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
           <h3></h3>
           <div>
             <p class="titre2">Conditions D'utilisations</p>
-              <a class="link" href="../Unlogged/Politique.html">
-                          <p>Politique de confidentialité</p>
-              </a>
+            <a class="link" href="../Unlogged/Politique.html">
+              <p>Politique de confidentialité</p>
+            </a>
 
             <a class="link" href="../Unlogged/CGU.html"><p>CGU</p></a>
           </div>

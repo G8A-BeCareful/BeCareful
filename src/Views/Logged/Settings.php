@@ -133,6 +133,19 @@ if (isset($_POST['delete_account'])) {
               <h3>Paramètres</h3></a
             >
           </div>
+          <div class="row_menu">
+            <a class="row_menu" href="Admin.html"
+              ><svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+              class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" 
+  d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 
+  0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+</svg>
+
+              <h3>Administrateur</h3></a
+            >
+          </div>
         </div>
         <div class="disconnect">
           <a class="disconnect" href="../Unlogged/Page_Accueil.html"
@@ -181,7 +194,7 @@ if (isset($_POST['delete_account'])) {
           <div class="columnAll">
             <div class="firstRow">
               <img class="imgProfil" src="../../img/image 18.png" alt="Profil" />
-              <h1>Modification du Profil</h1>
+              <h1>Paramètres</h1>
             </div>
             <div class="otherRow">
               <h3 class="titleSettings">Se désabonner de la newsletter</h3>
@@ -264,9 +277,13 @@ if (isset($_POST['delete_account'])) {
           <h3></h3>
           <div>
             <p class="titre2">Conditions D'utilisations</p>
-            <p>Conditions générales</p>
-            <p>Poptique de confidentialité</p>
-            <p>CGU</p>
+            
+                        <a class="link" href="../Unlogged/Politique.html">            
+                          <p>Politique de confidentialité</p>
+</a>
+
+<a class="link" href="../Unlogged/CGU.html"><p>CGU</p></a>
+
           </div>
         </div>
       </div>
