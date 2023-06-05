@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+
+if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
+    
+    $user_id = $_SESSION['user_id'];
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+
+  
+} else {
+    // Rediriger l'utilisateur s'il n'est pas connecté
+    header("Location: ../Unlogged/connexion.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -30,7 +48,7 @@
         <div>
           <h5 class="menuP">Menu Principal</h5>
           <div class="row_menu">
-            <a class="row_menu" href="Dashboard.html"
+            <a class="row_menu" href="Dashboard.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +66,7 @@
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="Statistiques.html"
+            <a class="row_menu" href="Statistiques.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +84,7 @@
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu"href="Settings.html"><svg
+            <a class="row_menu"href="Settings.php"><svg
               class="iconsMenu"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -108,11 +126,11 @@
       <div class="column2">
         <div class="section_haut">
           <div class="bonjourDate">
-            <h2 class="bonjour">Bonjour John</h2>
+            <h2 class="bonjour">Bonjour <?php echo $prenom . ' ' . $nom; ?></h2>
             <h5>Jeudi 27 Avril 2023</h5>
           </div>
           <div class="profilButton">
-            <a class="profile_menu" href="ModifProfil.html"
+            <a class="profile_menu" href="ModifProfil.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
