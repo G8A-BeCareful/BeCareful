@@ -1,15 +1,69 @@
+<?php
+session_start();
+
+
+if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
+    
+    $user_id = $_SESSION['user_id'];
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+
+  
+} else {
+    // Rediriger l'utilisateur s'il n'est pas connecté
+    header("Location: ../Unlogged/connexion.php");
+    exit();
+}
+// Vérifier si le bouton de suppression a été cliqué
+if (isset($_POST['delete_account'])) {
+  
+  /* Attempt MySQL server connection. Assuming you are running MySQL
+    server with default setting (user 'root' with no password) */
+    $link = mysqli_connect("localhost", "root", "", "dbsite");
+ 
+    // Check connection
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+        $erreur = "Erreur de connexion à la base de donnée.";
+    }
+ 
+    // Attempt insert query execution
+    $sql = "DELETE FROM users WHERE id = $user_id";
+
+    if (mysqli_query($link, $sql)){
+
+      session_unset();
+      session_destroy();
+      header("Location: ../Unlogged/Page_Accueil.html");
+      exit();
+    } else{
+      $erreur = "Erreur d'envoie de données. Veuillez réessayer ultérieurement.";
+    }
+
+  // Close connection
+  mysqli_close($link);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <script>
+        function deleteAccount() {
+            if (confirm("Êtes-vous sûr de vouloir supprimer votre compte ?")) {
+                document.getElementById("deleteForm").submit();
+            }
+        }
+    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard</title>
+    <title>Paramètres</title>
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="../../Style/Dashboard.css" />
+      href="../../Style/Settings.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../../Style/Footer.css" />
     <link
       rel="stylesheet"
@@ -30,7 +84,7 @@
         <div>
           <h5 class="menuP">Menu Principal</h5>
           <div class="row_menu">
-            <a class="row_menu" href="Dashboard.html"
+            <a class="row_menu" href="Dashboard.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +102,7 @@
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="Statistiques.html"
+            <a class="row_menu" href="Statistiques.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +120,7 @@
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="Settings.html"
+            <a class="row_menu para" href="Settings.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,6 +139,19 @@
                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               <h3>Paramètres</h3></a
+            >
+          </div>
+          <div class="row_menu">
+            <a class="row_menu" href="Admin.html"
+              ><svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+              class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" 
+  d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 
+  0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+</svg>
+
+              <h3>Administrateur</h3></a
             >
           </div>
         </div>
@@ -110,11 +177,11 @@
       <div class="column2">
         <div class="section_haut">
           <div class="bonjourDate">
-            <h2 class="bonjour">Bonjour John</h2>
+            <h2 class="bonjour">Bonjour <?php echo $prenom . ' ' . $nom; ?></h2>
             <h5>Jeudi 27 Avril 2023</h5>
           </div>
           <div class="profilButton">
-            <a class="profile_menu" href="ModifProfil.html"
+            <a class="profile_menu" href="ModifProfil.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -132,113 +199,71 @@
           </div>
         </div>
         <div class="bgPage">
-          <div class="boxInfo">
-            <h4 class="TheTitle">Vos dernières mesures</h4>
-            <div class="col_1">
-              <div class="roww_1">
-                <div class="boxType">
-                  <img class="stpicture" src="../../img/image16.png" alt="heart" />
-                  <div class="boxMeasures">
-                    <div class="dotRed"></div>
-                    <h6 class="littleTitle">Fréquence cardiaque</h6>
-                    <p class="commentaire">95 BPM</p>
-                    <h6 class="littleTitle"></h6>
-                  </div>
-                </div>
-                <div class="boxType">
-                  <img class="stpicture" src="../../img/image13.png" alt="eau" />
-                  <div class="boxMeasures">
-                    <div class="dotGreen"></div>
-                    <h6 class="littleTitle">Humidité</h6>
-                    <p class="commentaire">52 %</p>
-                    <h6 class="littleTitle"></h6>
-                  </div>
-                </div>
-                <div class="boxType">
-                  <img class="stpicture" src="../../img/image15.png" alt="casque" />
-                  <div class="boxMeasures">
-                    <div class="dotOrange"></div>
-                    <h6 class="littleTitle">Audio</h6>
-                    <p class="commentaire">60 dB</p>
-                    <h6 class="littleTitle"></h6>
-                  </div>
-                </div>
-              </div>
-              <div class="roww_2">
-                <div class="boxType">
-                  <img class="ndpicture" src="../../img/image2.png" alt="cloud CO2" />
-                  <div class="boxMeasures">
-                    <div class="dotGreen"></div>
-                    <h6 class="littleTitle">CO2</h6>
-                    <p class="commentaire">394</p>
-                    <h6 class="commentaire">Particules par millions</h6>
-                  </div>
-                </div>
-                <div class="boxType">
-                  <img class="ndpicture" src="../../img/image14.png" alt="thermomètre" />
-                  <div class="boxMeasures">
-                    <div class="dotGreen"></div>
-                    <h6 class="littleTitle">Température</h6>
-                    <p class="commentaire">24°C</p>
-                    <h6 class="littleTitle"></h6>
-                  </div>
-                </div>
-                <div class="boxType">
-                  <img class="ndpicture" src="../../img/clock.png" alt="Horloge" />
-                  <div class="boxMeasures">
-                    <div class="dotGreen"></div>
-                    <h6 class="littleTitle">Temps depuis dernières mesures</h6>
-                    <p class="commentaire">16</p>
-                    <h6 class="commentaire">minutes</h6>
-                  </div>
-                </div>
+          <div class="columnAll">
+            <div class="firstRow">
+              <img class="imgProfil" src="../../img/image 18.png" alt="Profil" />
+              <h1>Paramètres</h1>
+            </div>
+            <div class="otherRow">
+              <h3 class="titleSettings">Se désabonner de la newsletter</h3>
+              <div class="boxSlide">
+                <label class="switch switch1" for="checkbox1">
+                  <input type="checkbox" id="checkbox1" />
+                  <div class="slider slider1 round"></div>
+                </label>
               </div>
             </div>
-          </div>
-          <div class="boxConseil">
-            <h4 class="TheTitle">Conseils de la journée</h4>
-            <div class="LesParaf">
-              <div class="paraf1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <ul>
-                  <li>Vous n'avez pas été soumis à beaucoup de CO2</li>
-                  <li>La température ambiante est stable et accceptable</li>
-                  <li>Le niveau d'humidité est dans la moyenne</li>
-                </ul>
-              </div>
-              <div class="paraf2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <ul>
-                  <li>
-                    Pensez à calmer votre coeur en pratiquant des exercices de cohérence
-                    cardiaque
-                  </li>
-                  <li>Essayez de rester plus souvent éloigné des lieux bruyants</li>
-                </ul>
+            <div class="otherRow">
+              <h3 class="titleSettings">Dark mode</h3>
+              <div class="boxSlide">
+                <label class="switch switch2" for="checkbox2">
+                  <input type="checkbox" id="checkbox2" />
+                  <div class="slider slider2 round"></div>
+                </label>
               </div>
             </div>
+            <div class="otherRow">
+              <h3 class="titleSettings">Connexion automatique</h3>
+              <div class="boxSlide">
+                <label class="switch switch3" for="checkbox3">
+                  <input type="checkbox" id="checkbox3" />
+                  <div class="slider slider3 round"></div>
+                </label>
+              </div>
+            </div>
+            <div class="otherRow">
+              <h3 class="titleSettings">Désactiver la montre</h3>
+              <div class="boxSlide">
+                <label class="switch switch4" for="checkbox4">
+                  <input type="checkbox" id="checkbox4" />
+                  <div class="slider slider4 round"></div>
+                </label>
+              </div>
+            </div>
+            <div class="otherRow">
+              <h3 class="titleSettings">Effacer les cookies</h3>
+              <div class="boxSlide">
+                <label class="switch switch5" for="checkbox5">
+                  <input type="checkbox" id="checkbox5" />
+                  <div class="slider slider5 round"></div>
+                </label>
+              </div>
+            </div>
+            <div class="otherRow">
+              <h3 class="titleSettings">Supprimer définitivement le compte</h3>
+              <div class="buttonPlace1">
+                <a onclick="deleteAccount()" href="#" class="button12">Supprimer</a>
+              </div>
+              <form id="deleteForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                    <input type="hidden" name="delete_account">
+              </form>
+            </div>
+            <div class="buttonPlace">
+              <a href="#" class="button13">Confirmer</a>
+            </div>
+            <?php if (isset($erreur)): ?>
+                <p class="erreur"><?php echo $erreur; ?></p>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -266,9 +291,13 @@
           <h3></h3>
           <div>
             <p class="titre2">Conditions D'utilisations</p>
-            <p>Conditions générales</p>
-            <p>Poptique de confidentialité</p>
-            <p>CGU</p>
+            
+                        <a class="link" href="../Unlogged/Politique.html">            
+                          <p>Politique de confidentialité</p>
+</a>
+
+<a class="link" href="../Unlogged/CGU.html"><p>CGU</p></a>
+
           </div>
         </div>
       </div>

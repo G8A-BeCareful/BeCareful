@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/Exception.php';
@@ -52,4 +52,4 @@ function sendPasswordResetEmail($recipientEmail, $resetLink) {
         echo 'Error sending password reset email to ' . $recipientEmail . ': ' . $mail->ErrorInfo;
     }
 }
-?>
+?> -->

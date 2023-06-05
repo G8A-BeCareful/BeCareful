@@ -8,8 +8,9 @@ body {
   font-family: "Maven Pro", sans-serif;
   animation: 3s linear 0.1s colorIt;
 }
-.arrow{
+.arrow {
   width: 700px;
+  margin-left: 1%;
 }
 form {
   background-color: #fff;
@@ -17,6 +18,7 @@ form {
   border-radius: 10px;
   min-width: 300px;
 }
+
 form .h1 {
   color: #0000;
   text-align: center;
@@ -43,8 +45,12 @@ input[type="ConfirmPassword"] {
   font-family: "Maven Pro", sans-serif;
 }
 
-form .inputs input[type="Prenom"],
-input[type="Nom"] {
+.input_spe {
+  display: flex;
+  flex-direction: row;
+}
+
+form .inputs input[type="text"] {
   margin-top: 2%;
   margin-right: 2vw;
   min-width: 35%;
@@ -56,7 +62,7 @@ input[type="Nom"] {
   outline-color: #3358ea;
   outline-width: 2px;
   margin-bottom: 15px;
-  display: inline-block;
+  display: flex;
   flex-direction: row;
   font-family: "Maven Pro", sans-serif;
 }
@@ -167,31 +173,36 @@ svg {
 .Inscris:hover {
   text-decoration: underline;
 }
+
+.erreur {
+  color: red;
+}
+
 @media all and (max-width: 1065px) {
-  .boxBlue{
+  .boxBlue {
     display: none;
   }
   .mainBox {
     background-color: transparent;
   }
-  
-  form{
+
+  form {
     position: absolute;
     left: 10%;
     right: 10%;
   }
-  .boutonConnect{
+  .boutonConnect {
     padding-top: 20px;
   }
-  svg{
+  svg {
     color: #f5f5f5;
   }
-  svg:hover{
+  svg:hover {
     color: #3358ea;
   }
 }
-@media all and (max-width: 699.20px) {
-  .content{
+@media all and (max-width: 699.2px) {
+  .content {
     width: inherit;
   }
 }

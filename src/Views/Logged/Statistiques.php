@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+
+if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
+    
+    $user_id = $_SESSION['user_id'];
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+
+  
+} else {
+    // Rediriger l'utilisateur s'il n'est pas connecté
+    header("Location: ../Unlogged/connexion.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -26,7 +44,7 @@
         <div>
           <h5 class="menuP">Menu Principal</h5>
           <div class="row_menu">
-            <a class="row_menu" href="Dashboard.html"
+            <a class="row_menu" href="Dashboard.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +62,7 @@
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="Statistiques.html"
+            <a class="row_menu" href="Statistiques.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +80,7 @@
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="Settings.html"
+            <a class="row_menu" href="Settings.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +99,19 @@
                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               <h3>Paramètres</h3></a
+            >
+          </div>
+          <div class="row_menu">
+            <a class="row_menu" href="Admin.html"
+              ><svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+              class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" 
+  d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 
+  0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+</svg>
+
+              <h3>Administrateur</h3></a
             >
           </div>
         </div>
@@ -106,11 +137,11 @@
       <div class="column2">
         <div class="section_haut">
           <div class="bonjourDate">
-            <h2 class="bonjour">Bonjour John</h2>
+            <h2 class="bonjour">Bonjour <?php echo $prenom . ' ' . $nom; ?></h2>
             <h5>Jeudi 27 Avril 2023</h5>
           </div>
           <div class="profilButton">
-            <a class="profile_menu" href="ModifProfil.html"
+            <a class="profile_menu" href="ModifProfil.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -348,9 +379,12 @@
           <h3></h3>
           <div>
             <p class="title2">Conditions D'utilisations</p>
-            <p>Conditions générales</p>
-            <p>Poptique de confidentialité</p>
-            <p>CGU</p>
+            
+                        <a class="link" href="../Unlogged/Politique.html">
+                          <p>Politique de confidentialité</p>
+</a>
+
+<a class="link" href="../Unlogged/CGU.html"><p>CGU</p></a>
           </div>
         </div>
       </div>

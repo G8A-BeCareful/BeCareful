@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -33,4 +33,4 @@ if ($mail->send()) {
 } else {
     echo 'Error: ' . $mail->ErrorInfo;
 }
-?>
+?> -->

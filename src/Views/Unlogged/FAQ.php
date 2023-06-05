@@ -1,3 +1,33 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $question = $_POST["question"];
+  if (empty($question)) {
+    $erreur = "Please fill in all the fields.";
+  } else {
+    /* Attempt MySQL server connection. Assuming you are running MySQL
+    server with default setting (user 'root' with no password) */
+    $link = mysqli_connect("localhost", "root", "", "dbsite");
+ 
+    // Check connection
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+    }
+ 
+    // Attempt insert query execution
+    $sql = "INSERT INTO faq (question) VALUES ('$question')";
+
+    if(mysqli_query($link, $sql)){
+      $message = "Votre question a bien été envoyée.";
+        
+    } else{
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    }
+ 
+    // Close connection
+    mysqli_close($link);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -62,11 +92,16 @@
       </details>
       <h2 class="titleMain">Une question ? Contactez-nous !</h2>
       <div class="forms">
-        <label for="Objet"> </label>
-        <textarea class="input-container1" placeholder="Votre question ici..."></textarea>
-      </div>
-      <div class="buttonWhere">
-        <a href="#" class="button25">Envoyer</a>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+          <label for="Objet"></label>
+          <textarea class="input-container1" name="question" placeholder="Votre question ici..."></textarea>
+          <?php if (isset($message)): ?>
+            <p class="confirmation"><?php echo $message; ?></p>
+          <?php endif; ?>
+          <div class="buttonWhere">
+           <a href="#" onclick="document.querySelector('form').submit();" class="button25">Envoyer</a>
+          </div>
+       </form>
       </div>
     </div>
     <!-- <div class="contain">
@@ -151,7 +186,7 @@
         <div>
           <div class="BeCareful">
             <p class="title">Aide</p>
-            <a class="link" href="FAQ.html"><p>FAQ</p></a>
+            <a class="link" href="FAQ.php"><p>FAQ</p></a>
 
             <p>© BeCareful 2023</p>
           </div>
@@ -160,10 +195,11 @@
           <h3></h3>
           <div>
             <p class="title">Conditions D'utilisations</p>
+            
+                        <a class="link" href="Politique.html">            <a class="link" href="Politique.html"><p>Politique de confidentialité</p></a>
+</a>
 
-            <a class="link" href="Politique.html"><p>Politique de confidentialité</p></a>
-
-            <a class="link" href="CGU.html"><p>CGU</p></a>
+            <p>CGU</p>
           </div>
         </div>
       </div>
