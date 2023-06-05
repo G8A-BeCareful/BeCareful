@@ -195,8 +195,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <h3></h3>
           <div>
             <p class="title">Conditions D'utilisations</p>
-            <p>Conditions générales</p>
-            <p>Poptique de confidentialité</p>
+            
+                        <a class="link" href="Politique.html">            <a class="link" href="Politique.html"><p>Politique de confidentialité</p></a>
+</a>
+
             <p>CGU</p>
           </div>
         </div>

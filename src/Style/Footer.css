@@ -55,7 +55,8 @@ ul li {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 1px;
+    margin-top: 5%;
+    
   }
   .BeCareful {
     text-align: center;

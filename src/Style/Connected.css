@@ -77,7 +77,6 @@ body {
   color: #7e7e7e;
   display: flex;
   flex-direction: row;
-  
 }
 
 .profile_menu svg {
@@ -186,54 +185,56 @@ a {
   margin-left: 2%;
 }
 @media all and (max-width: 970px) {
-  .titre1{
+  .titre1 {
     display: none;
   }
-  .title{
+  .title {
     margin-top: 40px;
     margin-bottom: 50px;
     margin-left: 25px;
     margin-right: 25px;
   }
-  .title img{
+  .title img {
     width: 70px;
   }
-  .row_menu h3, .disconnect h3{
+  .row_menu h3,
+  .disconnect h3 {
     display: none;
   }
-  .row_menu svg, .disconnect svg{
+  .row_menu svg,
+  .disconnect svg {
     width: 70px;
     padding-bottom: 20%;
     padding-top: 5%;
   }
-  
-  .menuP{
+
+  .menuP {
     margin-left: 10%;
     font-size: 100%;
   }
-  .profile_menu{
+  .profile_menu {
     width: 80px;
   }
 
-  .profile_menu h3{
+  .profile_menu h3 {
     display: none;
   }
-  .profile_menu svg{
+  .profile_menu svg {
     width: 70%;
   }
-  .menuP{
+  .menuP {
     font-size: 20px;
     margin-left: 10px;
   }
 }
 @media all and (max-width: 970px) {
-  .title img{
+  .title img {
     width: 60px;
     height: 60px;
   }
 }
-@media all and (max-width: 1080px){
-  .button{
+@media all and (max-width: 1080px) {
+  .button {
     width: 100px;
   }
 }

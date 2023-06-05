@@ -199,12 +199,12 @@ textarea::placeholder {
   text-align: center;
 }
 @media all and (max-width: 830px) {
-    .forms {
-      width: 90%;
-    }
-    .titleMain{
-      text-align: left;
-    }
+  .forms {
+    width: 90%;
+  }
+  .titleMain {
+    text-align: left;
+  }
 }
 
 /*button{
