@@ -25,7 +25,6 @@ if (isset($_POST['delete_account'])) {
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
         $erreur = "Erreur de connexion à la base de donnée.";
-        exit();
     }
  
     // Attempt insert query execution
