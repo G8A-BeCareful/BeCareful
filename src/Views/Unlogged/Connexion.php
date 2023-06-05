@@ -20,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
           $erreur = "Erreur de connexion à la base de donnée.";
-          exit();
       }
 
       $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND mdp=? LIMIT 1");

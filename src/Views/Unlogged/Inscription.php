@@ -31,38 +31,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
         $erreur = "Erreur de connexion à la base de donnée.";
-        exit();
     }
- 
-    // Attempt insert query execution
-    $sql = "INSERT INTO Users (firstname, lastname, email, mdp) VALUES ('$prenom', '$nom', '$email', '$userPassword')";
 
-    if(mysqli_query($link, $sql)){
-        // Détruire les anciennes données de session
-        session_unset();
-        session_destroy();
-        session_start();
+    $checkQuery = "SELECT * FROM Users WHERE email = '$email'";
+    $result = mysqli_query($link, $checkQuery);
+    if (mysqli_num_rows($result) > 0) {
+        $erreur = "Cet e-mail est déjà assigné à un utilisateur.";
+    } else {
+        // Attempt insert query execution
+        $sql = "INSERT INTO Users (firstname, lastname, email, mdp) VALUES ('$prenom', '$nom', '$email', '$userPassword')";
 
-        $query = "SELECT id, firstname, lastname FROM Users WHERE email = '$email'";
-        $result = mysqli_query($link, $query);
-        $row = mysqli_fetch_assoc($result);
-        $idFromDB = $row['id'];
-        $prenomFromDB = $row['firstname'];
-        $nomFromDB = $row['lastname'];
+        if(mysqli_query($link, $sql)){
+            // Détruire les anciennes données de session
+            session_unset();
+            session_destroy();
+            session_start();
 
-        // Stocker les valeurs de prénom et de nom dans les variables de session
-        $_SESSION['user_id'] = $idFromDB;
-        $_SESSION['prenom'] = $prenomFromDB;
-        $_SESSION['nom'] = $nomFromDB;
-        header("Location: ../Logged/Dashboard.php");
-        exit();
-    } else{
-        $erreur = "Erreur d'envoie de données. Veuillez réessayer ultérieurement.";
-    }
+            $query = "SELECT id, firstname, lastname FROM Users WHERE email = '$email'";
+            $result = mysqli_query($link, $query);
+            $row = mysqli_fetch_assoc($result);
+            $idFromDB = $row['id'];
+            $prenomFromDB = $row['firstname'];
+            $nomFromDB = $row['lastname'];
+
+            // Stocker les valeurs de prénom et de nom dans les variables de session
+            $_SESSION['user_id'] = $idFromDB;
+            $_SESSION['prenom'] = $prenomFromDB;
+            $_SESSION['nom'] = $nomFromDB;
+            header("Location: ../Logged/Dashboard.php");
+            exit();
+        } else{
+            $erreur = "Erreur d'envoie de données. Veuillez réessayer ultérieurement.";
+        }
  
     // Close connection
     mysqli_close($link);
     }
+ }
 }
 ?>
 
