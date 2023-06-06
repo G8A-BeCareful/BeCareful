@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $database = "LndrbT9YkW_be_careful";
 
       // Create connection
-      $conn = new mysqli( $username, $password, $database);
+      $conn = new mysqli(  $database, $username, $password);
 
       // Check connection
       if ($conn->connect_error) {

@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   } else {
     /* Attempt MySQL server connection. Assuming you are running MySQL
     server with default setting (user 'root' with no password) */
-    $link = mysqli_connect("BnPO2R2pIX_be_careful", "SvfkmIOFz0hQLLac", "LndrbT9YkW_be_careful");
+    $link = mysqli_connect("LndrbT9YkW_be_careful","BnPO2R2pIX_be_careful", "SvfkmIOFz0hQLLac", );
  
     // Check connection
     if($link === false){
