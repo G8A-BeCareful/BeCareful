@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Politique de confidentialité</title>
-    <link rel="stylesheet" type="text/css" href="../../Style/Header.css" />
-    <link rel="stylesheet" type="text/css" href="../../Style/Footer.css" />
-    <link href="../../Style/Politique.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Style/Header.css" />
+    <link rel="stylesheet" type="text/css" href="/Style/Footer.css" />
+
+    <link href="/Style/Politique.css" type="text/css" rel="stylesheet" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
@@ -16,25 +17,23 @@
     <header>
       <div class="header">
         <div class="logo">
-          <a href="Page_Accueil.html" class="logo">
-            <img src="../../img/Logo-becareful.png" alt="Logo" class="logoImg" />
+          <a href="/index.php" class="logo">
+            <img src="/img/Logo-becareful.png" alt="Logo" class="logoImg" />
             BeCareful
           </a>
         </div>
         <label for="toggle" class="menuderoulant">☰</label>
         <input type="checkbox" id="toggle" />
         <div class="navbar">
-          <a href="Page_Accueil.html" class="nav">Accueil</a>
-          <a href="Notre_Produit.html" class="nav">Notre Produit</a>
-          <a href="APropos.html" class="nav">À Propos</a>
-          <a href="ContactezNous.html" class="nav">Nous Contacter</a>
-          <a href="Inscription.php" class="inscripConnexion2">S'Inscrire</a>
-          <a href="Connexion.php" class="inscripConnexion2">Se Connecter</a>
+          <a href="/index.php" class="nav">Accueil</a>
+          <a href="/Views/Unlogged/Notre_Produit.html" class="nav">Notre Produit</a>
+          <a href="/Views/Unlogged/APropos.html" class="nav">À Propos</a>
+          <a href="/Views/Unlogged/ContactezNous.html" class="nav">Nous Contacter</a>
         </div>
         <div class="header-right">
-          <a href="Inscription.php" class="nav">S'Inscrire</a>
+          <a href="/Views/Unlogged/Inscription.php" class="nav">S'Inscrire</a>
           <div class="buttonPlace">
-            <a href="Connexion.php" class="button">Se Connecter</a>
+            <a href="/Views/Unlogged/Connexion.php" class="button">Se Connecter</a>
           </div>
         </div>
       </div>
@@ -116,17 +115,20 @@
         <div class="listFooter">
           <div class="BeCareful">
             <p class="title">BeCareful</p>
-            <a class="link" href="APropos.html"><p>Qui sommes-nous ?</p></a>
-            <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moupneaux</p>
+            <a class="link" href="/Views/Unlogged/APropos.html"
+              ><p>Qui sommes-nous ?</p></a
+            >
+            <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</p>
             <p>Horaires : Du lundi au samedi de 9h à 18h</p>
-            <a class="link" href="Notre_Produit.html"><p>Notre Produit</p></a>
+            <a class="link" href="/Views/Unlogged/Notre_Produit.html"
+              ><p>Notre Produit</p></a
+            >
           </div>
         </div>
         <div>
           <div class="BeCareful">
             <p class="title">Aide</p>
-            <a class="link" href="FAQ.html"><p>FAQ</p></a>
-
+            <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
             <p>© BeCareful 2023</p>
           </div>
         </div>
@@ -135,10 +137,11 @@
           <div>
             <p class="title">Conditions D'utilisations</p>
 
-            <a class="link" href="Politique.html">
-              <p>Politique de confidentialité</p>
+            <a class="link" href="/Views/Unlogged/Politique.html"
+              ><p>Politique de confidentialité</p>
             </a>
-            <a class="link" href="CGU.html"><p>CGU</p></a>
+
+            <a class="link" href="/Views/Unlogged/CGU.html"><p>CGU</p></a>
           </div>
         </div>
       </div>

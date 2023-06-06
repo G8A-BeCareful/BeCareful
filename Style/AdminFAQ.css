@@ -13,6 +13,14 @@ body {
   align-items: center;
 }
 
-.imgProfil {
-  margin-right: 2%;
+.bank {
+  margin-right: 20px;
+  width: 80px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }

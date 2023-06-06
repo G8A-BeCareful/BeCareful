@@ -140,18 +140,23 @@ a {
 }
 
 .button {
-  width: 12%;
+  margin-top: 4%;
+  width: auto;
   color: white;
   text-decoration: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 14px 32px;
   background: #3358ea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  font-size: 13px;
+  padding: 14px 32px;
+  font-size: 15px;
+  transition: box-shadow 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: aliceblue;
+  color: #3358ea;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .buttonPlace {

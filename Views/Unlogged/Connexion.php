@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Formulaire de connexion</title>
-    <link rel="stylesheet" type="text/css" href="../../Style/Connexion.css"/>
+    <link rel="stylesheet" type="text/css" href="/Style/Connexion.css"/>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="mainBox">
         <div class="Logop">
             <div class="arrow">
-                <a href="../Unlogged/Page_Accueil.html">
+                <a href="/index.php">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="Logop">
                 <div class="Logoi">
-                    <img src="../../img/Logo-becareful.png" alt="Logo"/>
+                    <img src="/img/Logo-becareful.png" alt="Logo"/>
                 </div>
                 <div class="Logoc">
                     <h2 class="becareful">Becareful</h2>
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="email"></label>
                 <input type="text" name="email" placeholder="Nom d'utilisateur"/>
                 <div>
-                    <a class="Inscris" href="MdpOublie.html">
+                    <a class="Inscris" href="/Views/Unlogged/MdpOublie.html">
                         <p class="forgot"><span>Mot de passe oublié ?</span></p>
                     </a>
                 </div>
@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <p class="inscription">
                 Vous n'avez pas encore de compte ?
-                <a class="Inscris" href="Inscription.php"><span>Inscrivez-vous</span></a>
+                <a class="Inscris" href="/Views/Unlogged/Inscription.php"><span>Inscrivez-vous</span></a>
             </p>
         </form>
     </div>

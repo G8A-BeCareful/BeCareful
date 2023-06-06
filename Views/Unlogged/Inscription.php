@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Formulaire d'inscription</title>
-    <link rel="stylesheet" type="text/css" href="../../Style/Inscription.css"/>
+    <link rel="stylesheet" type="text/css" href="/Style/Inscription.css"/>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="mainBox">
         <div class="Logop">
             <div class="arrow">
-                <a href="Page_Accueil.html"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                <a href="/index.php"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                   stroke-width="1.5" stroke="currentColor"
                                                   class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="rowLogo">
-                <img src="../../img/Logo-becareful.png" alt="Logo" class="imgLogo"/>
+                <img src="/img/Logo-becareful.png" alt="Logo" class="imgLogo"/>
                 <h2 class="becareful">Becareful</h2>
             </div>
             <h1>Inscrivez-vous !</h1>
@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <p class="inscription">
                 Vous avez déjà un compte ?
-                <a class="Inscris" href="Connexion.php"><span>Connectez-vous</span></a>
+                <a class="Inscris" href="/Views/Unlogged/Connexion.php"><span>Connectez-vous</span></a>
             </p>
         </form>
     </div>

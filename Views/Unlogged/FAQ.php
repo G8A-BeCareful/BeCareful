@@ -1,3 +1,33 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $question = $_POST["question"];
+  if (empty($question)) {
+    $erreur = "Please fill in all the fields.";
+  } else {
+    /* Attempt MySQL server connection. Assuming you are running MySQL
+    server with default setting (user 'root' with no password) */
+    $link = mysqli_connect("localhost", "root", "", "dbsite");
+ 
+    // Check connection
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+    }
+ 
+    // Attempt insert query execution
+    $sql = "INSERT INTO faq (question) VALUES ('$question')";
+
+    if(mysqli_query($link, $sql)){
+      $message = "Votre question a bien été envoyée.";
+        
+    } else{
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    }
+ 
+    // Close connection
+    mysqli_close($link);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -5,36 +35,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FAQ</title>
-    <link rel="stylesheet" type="text/css" href="../../Style/Header.css" />
-    <link rel="stylesheet" type="text/css" href="../../Style/Footer.css" />
-    <link href="../../Style/FAQ.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Style/Header.css" />
+       <link rel="stylesheet" type="text/css" href="/Style/Footer.css" />
+
+
+    <link href="/Style/FAQ.css" type="text/css" rel="stylesheet" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
   </head>
   <body>
-    <header>
+ <header>
       <div class="header">
         <div class="logo">
-          <a href="Page_Accueil.html" class="logo">
-            <img src="../../img/Logo-becareful.png" alt="Logo" class="logoImg" />
+          <a href="/index.php" class="logo">
+            <img src="/img/Logo-becareful.png" alt="Logo" class="logoImg" />
             BeCareful
           </a>
         </div>
         <label for="toggle" class="menuderoulant">☰</label>
         <input type="checkbox" id="toggle" />
         <div class="navbar">
-          <a href="Page_Accueil.html" class="nav">Accueil</a>
-          <a href="Notre_Produit.html" class="nav">Notre Produit</a>
-          <a href="APropos.html" class="nav">À Propos</a>
-          <a href="ContactezNous.html" class="nav">Nous Contacter</a>
-          <a href="Inscription.php" class="inscripConnexion2">S'Inscrire</a>
-          <a href="Connexion.php" class="inscripConnexion2">Se Connecter</a>
+          <a href="/index.php" class="nav">Accueil</a>
+          <a href="/Views/Unlogged/Notre_Produit.html" class="nav">Notre Produit</a>
+          <a href="/Views/Unlogged/APropos.html" class="nav">À Propos</a>
+          <a href="/Views/Unlogged/ContactezNous.html" class="nav">Nous Contacter</a>
         </div>
         <div class="header-right">
-          <a href="Inscription.php" class="nav">S'Inscrire</a>
+          <a href="/Views/Unlogged/Inscription.php" class="nav">S'Inscrire</a>
           <div class="buttonPlace">
-            <a href="Connexion.php" class="button">Se Connecter</a>
+            <a href="/Views/Unlogged/Connexion.php" class="button">Se Connecter</a>
           </div>
         </div>
       </div>
@@ -62,11 +92,16 @@
       </details>
       <h2 class="titleMain">Une question ? Contactez-nous !</h2>
       <div class="forms">
-        <label for="Objet"> </label>
-        <textarea class="input-container1" placeholder="Votre question ici..."></textarea>
-      </div>
-      <div class="buttonWhere">
-        <a href="#" class="button25">Envoyer</a>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+          <label for="Objet"></label>
+          <textarea class="input-container1" name="question" placeholder="Votre question ici..."></textarea>
+          <?php if (isset($message)): ?>
+            <p class="confirmation"><?php echo $message; ?></p>
+          <?php endif; ?>
+          <div class="buttonWhere">
+           <a href="#" onclick="document.querySelector('form').submit();" class="button25">Envoyer</a>
+          </div>
+       </form>
       </div>
     </div>
     <!-- <div class="contain">
@@ -137,22 +172,21 @@
         <br />
       </div>
     </div>  -->
-    <footer>
+<footer>
       <div class="footer">
         <div class="listFooter">
           <div class="BeCareful">
             <p class="title">BeCareful</p>
-            <a class="link" href="APropos.html"><p>Qui sommes-nous ?</p></a>
-            <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moupneaux</p>
+            <a class="link" href="/Views/Unlogged/APropos.html"><p>Qui sommes-nous ?</p></a>
+            <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</p>
             <p>Horaires : Du lundi au samedi de 9h à 18h</p>
-            <a class="link" href="Notre_Produit.html"><p>Notre Produit</p></a>
+            <a class="link" href="/Views/Unlogged/Notre_Produit.html"><p>Notre Produit</p></a>
           </div>
         </div>
         <div>
           <div class="BeCareful">
             <p class="title">Aide</p>
-            <a class="link" href="FAQ.html"><p>FAQ</p></a>
-
+            <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
             <p>© BeCareful 2023</p>
           </div>
         </div>
@@ -160,10 +194,11 @@
           <h3></h3>
           <div>
             <p class="title">Conditions D'utilisations</p>
+            
+                        <a class="link" href="/Views/Unlogged/Politique.html"><p>Politique de confidentialité</p>
+</a>
 
-            <a class="link" href="Politique.html"><p>Politique de confidentialité</p></a>
-
-            <a class="link" href="CGU.html"><p>CGU</p></a>
+<a class="link" href="/Views/Unlogged/CGU.html"><p>CGU</p></a>
           </div>
         </div>
       </div>

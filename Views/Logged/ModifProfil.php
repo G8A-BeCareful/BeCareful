@@ -28,12 +28,18 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
       type="text/css"
       media="screen"
       href="../../Style/ModifProfil.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../../Style/Footer.css" />
+    <link rel="stylesheet" type="text/css" href="/Style/Footer.css" />
+
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="../../Style/Connected.css" />
+      href="/Style/Connected.css" />
+      <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/Style/Settings.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
@@ -42,13 +48,13 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     <div class="container">
       <div class="column1">
         <div class="title">
-          <img src="../../img/Logo-becareful.png" alt="Logo" />
+          <img src="/img/Logo-becareful.png" alt="Logo" />
           <h1 class="titre1">BeCareful</h1>
         </div>
         <div>
           <h5 class="menuP">Menu Principal</h5>
           <div class="row_menu">
-            <a class="row_menu" href="Dashboard.php"
+            <a class="row_menu" href="/Views/Logged/Dashboard.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +72,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="Statistiques.php"
+            <a class="row_menu" href="/Style/Stats.css
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +90,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu"href="Settings.php"><svg
+            <a class="row_menu"href="/Views/Logged"><svg
               class="iconsMenu"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -104,7 +110,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             <h3>Paramètres</h3></>
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="Admin.html"
+            <a class="row_menu" href="/Views/Logged/AdminFAQ.html"
               ><svg xmlns="http://www.w3.org/2000/svg" fill="none" 
               viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
               class="w-6 h-6">
@@ -118,7 +124,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
           </div>
         </div>
         <div class="disconnect">
-          <a class="disconnect" href="../Unlogged/Page_Accueil.html"
+          <a class="disconnect" href="/index.php"
             ><svg
               class="iconsMenu"
               xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +138,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                 stroke-linejoin="round"
                 d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
             </svg>
-            <h3 href="deconnexion.php">Se déconnecter</h3></a
+            <h3 href="/Views/Logged/deconnexion.php">Se déconnecter</h3></a
           >
         </div>
       </div>
@@ -143,7 +149,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             <h5>Jeudi 27 Avril 2023</h5>
           </div>
           <div class="profilButton">
-            <a class="profile_menu" href="ModifProfil.php"
+            <a class="profile_menu" href="/Views/Logged/ModifProfil.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -161,7 +167,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
           </div>
         </div>
         <div class="bgPage">
-          <div class="firstRow"><img class="imgProfil" src="../../img/image 17.png" alt="Profil" />
+          <div class="firstRow"><img class="imgProfil" src="/img/image 17.png" alt="Profil" />
           <h1>Modification du Profil</h1></div>
           <div class="allForms">
             <div class="twoForm">
@@ -229,45 +235,41 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             </div>
           </div>
           <div class="buttonPlace">
-            <a href="#" class="button">Modifier</a>
+            <a href="#" class="button13">Modifier</a>
           </div>
         </div>
       </div>
     </div>
-    <footer>
-      <footer>
-        <div class="footer">
-          <div class="listFooter">
-            <div class="BeCareful">
-              <p class="titre2">BeCareful</p>
-              <a class="link" href="APropos.html"><p>Qui sommes-nous ?</p></a>
-              <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moupneaux</p>
-              <p>Horaires : Du lundi au samedi de 9h à 18h</p>
-              <a class="link" href="Notre_Produit.html"><p>Notre Produit</p></a>
-            </div>
-          </div>
-          <div>
-            <div class="BeCareful">
-              <p class="titre2">Aide</p>
-              <a class="link" href="FAQ.html"><p>FAQ</p></a>
-    
-              <p>© BeCareful 2023</p>
-            </div>
-          </div>
+<footer>
+      <div class="footer">
+        <div class="listFooter">
           <div class="BeCareful">
-            <h3></h3>
-            <div>
-              <p class="titre2">Conditions D'utilisations</p>
-              
-                          <a class="link" href="../Unlogged/Politique.html">
-                                        <p>Politique de confidentialité</p>
-</a>
-
-<a class="link" href="../Unlogged/CGU.html"><p>CGU</p></a>
-
-            </div>
+            <p class="title">BeCareful</p>
+            <a class="link" href="/Views/Unlogged/APropos.html"><p>Qui sommes-nous ?</p></a>
+            <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</p>
+            <p>Horaires : Du lundi au samedi de 9h à 18h</p>
+            <a class="link" href="/Views/Unlogged/Notre_Produit.html"><p>Notre Produit</p></a>
           </div>
         </div>
-      </footer>
+        <div>
+          <div class="BeCareful">
+            <p class="title">Aide</p>
+            <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
+            <p>© BeCareful 2023</p>
+          </div>
+        </div>
+        <div class="BeCareful">
+          <h3></h3>
+          <div>
+            <p class="title">Conditions D'utilisations</p>
+            
+                        <a class="link" href="/Views/Unlogged/Politique.html"><p>Politique de confidentialité</p>
+</a>
+
+<a class="link" href="/Views/Unlogged/CGU.html"><p>CGU</p></a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
