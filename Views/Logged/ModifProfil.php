@@ -72,7 +72,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="/Style/Stats.css
+            <a class="row_menu" href="/Views/Logged/Statistiques.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
