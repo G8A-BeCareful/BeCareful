@@ -236,7 +236,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                   </div>
                 </div>
                 <div class="boxType">
-                  <img class="ndpicture" src="/img/" alt="thermomètre" />
+                  <img class="ndpicture" src="/img/image14.png" alt="thermomètre" />
                   <div class="boxMeasures">
                     <div class="dotGreen"></div>
                     <h6 class="littleTitle">Température</h6>
@@ -245,7 +245,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                   </div>
                 </div>
                 <div class="boxType">
-                  <img class="ndpicture" src="../Unlogged/" alt="Horloge" />
+                  <img class="ndpicture" src="/img/clock.png" alt="Horloge" />
                   <div class="boxMeasures">
                     <div class="dotGreen"></div>
                     <h6 class="littleTitle">Temps depuis dernières mesures</h6>

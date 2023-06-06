@@ -25,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   } else {
     /* Attempt MySQL server connection. Assuming you are running MySQL
     server with default setting (user 'root' with no password) */
-    $link = mysqli_connect("LndrbT9YkW_be_careful","BnPO2R2pIX_be_careful", "SvfkmIOFz0hQLLac", );
- 
+    $link = mysqli_connect("localhost", "root", "", "dbsite"); 
     // Check connection
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -124,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <input type="password" name="confirmPassword" placeholder="Confirmez le Mot de passe"/>
             </div>
             <div class="boutonConnect">
-                <button type="submit" class="seConnect">S'inscrire</button>
+                <button type="submit" name='register_btn' class="seConnect">S'inscrire</button>
             </div>
             <p class="inscription">
                 Vous avez déjà un compte ?
