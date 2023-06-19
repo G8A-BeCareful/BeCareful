@@ -35,19 +35,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         session_start();
 
         $row = $result->fetch_assoc();
-        $user_id = $row['id'];
-        $prenom = $row['firstname'];
-        $nom = $row['lastname'];
-        $email = $row['email'];
-        $birthdate = $row['birthdate'];
+        $idFromDB = $row['id'];
+        $prenomFromDB = $row['firstname'];
+        $nomFromDB = $row['lastname'];
+        $emailFromDB = $row['email'];
+        $birthdateFromDB = $row['birthdate'];
+        $adminFromDB = $row['administrator'];
         
     
         // Stocker les informations de l'utilisateur dans la session
-        $_SESSION['user_id'] = $user_id;
-        $_SESSION['nom'] = $nom;
-        $_SESSION['prenom'] = $prenom;
-        $_SESSION['email'] = $email;
-        $_SESSION['birthdate'] = $birthdate;
+        $_SESSION['user_id'] = $idFromDB;
+        $_SESSION['prenom'] = $prenomFromDB;
+        $_SESSION['nom'] = $nomFromDB;
+        $_SESSION['email'] = $emailFromDB;
+        $_SESSION['birthdate'] = $birthdateFromDB;
+        $_SESSION['admin'] = $adminFromDB;
         header("Location: ../Logged/Dashboard.php");
         $stmt->close();
         $conn->close();
