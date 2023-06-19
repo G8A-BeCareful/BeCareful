@@ -7,12 +7,94 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     $user_id = $_SESSION['user_id'];
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
+    $email = $_SESSION['email'];
+    $birthdate = $_SESSION['birthdate'];
+    
 
   
 } else {
-    // Rediriger l'utilisateur s'il n'est pas connecté
     header("Location: ../Unlogged/connexion.php");
     exit();
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  $nouveauPrenom = $_POST['prenom'];
+  $nouveauNom = $_POST['nom'];
+  $nouvelEmail = $_POST['email'];
+  $nouvelleDateNaissance = $_POST['date_of_birth'];
+  $nouveauMotDePasse = $_POST['password'];
+  $confirmerMotDePasse = $_POST['confirmpassword'];
+  $uppercase = preg_match('@[A-Z]@', $nouveauMotDePasse);
+  $lowercase = preg_match('@[a-z]@', $nouveauMotDePasse);
+  $number    = preg_match('@[0-9]@', $nouveauMotDePasse);
+  $specialChars = preg_match('@[^\w]@', $nouveauMotDePasse);
+  if (!empty($nouveauPrenom) && (!preg_match('/^[A-Za-zéèêëïîôöàäâùüûçñÉÈÊËÏÎÔÖÀÄÂÙÜÛÇÑ\s-]{2,}$/u', $nouveauPrenom))) {
+    $erreur = "Format de prénom invalide.";
+  } else if (!empty($nouveauNom) && (!preg_match('/^[A-Za-zéèêëïîôöàäâùüûçñÉÈÊËÏÎÔÖÀÄÂÙÜÛÇÑ\s-]{2,}$/u', $nouveauNom))) {
+    $erreur = "Format de prénom invalide.";
+  } else if(!empty($nouveauMotDePasse) && (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($nouveauMotDePasse) < 8)) {
+    $erreur = "Le mot de passe doit comporter au moins 8 caractères, inclure au moins une lettre majuscule, un chiffre et un caractère spécial.";
+  } else if (!empty($nouvelEmail) && (!filter_var($nouvelEmail, FILTER_VALIDATE_EMAIL))) {
+    $erreur = "Format d'email invalide.";
+  } elseif (!empty($nouveauMotDePasse) && ($nouveauMotDePasse !== $confirmerMotDePasse)) {
+    $erreur = "Les mots de passe ne correspondent pas.";
+  } else {
+   
+    $link = mysqli_connect("localhost", "root", "", "dbsite");
+ 
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+        $erreur = "Erreur de connexion à la base de donnée.";
+    }
+
+    $Query = "SELECT * FROM Users WHERE id = '$user_id'";
+    $result = mysqli_query($link, $Query);
+    $row = mysqli_fetch_assoc($result);
+
+    $CheckQuery = "SELECT * FROM Users WHERE email = '$nouvelEmail'";
+    $resultEmail = mysqli_query($link, $CheckQuery);
+
+    if (!empty($nouveauPrenom) && ($nouveauPrenom !== $row['firstname'])) {
+
+        $sql = "UPDATE users SET firstname = '$nouveauPrenom' WHERE id = $user_id";
+        if(mysqli_query($link, $sql)){
+          $erreur = "Informations modifiées.";
+        }
+    }
+
+    if (!empty($nouveauNom) && ($nouveauNom !== $row['lastname'])) {
+ 
+        $sql = "UPDATE users SET lastname = '$nouveauNom' WHERE id = $user_id";
+        if(mysqli_query($link, $sql)){
+          $erreur = "Informations modifiées.";
+        }
+
+    }
+
+    if (!empty($nouvelEmail) && (!(mysqli_num_rows($resultEmail) > 0))) {
+
+        $sql = "UPDATE users SET email = '$nouvelEmail' WHERE id = $user_id";
+        if(mysqli_query($link, $sql)){
+          $erreur = "Informations modifiées.";
+        }
+    }
+
+    if (!empty($nouvelleDateNaissance) && ($nouvelleDateNaissance !== $row['birthdate'])) {
+
+        $sql = "UPDATE users SET birthdate = '$nouvelleDateNaissance' WHERE id = $user_id";
+        if(mysqli_query($link, $sql)){
+          $erreur = "Informations modifiées.";
+        }
+    }
+    if (!empty($nouveauMotDePasse) && ($nouveauMotDePasse == $confirmerMotDePasse) && ($nouveauMotDePasse !== $row['mdp'])) {
+   
+      $sql = "UPDATE users SET mdp = '$nouveauMotDePasse' WHERE id = $user_id";
+      if(mysqli_query($link, $sql)){
+        $erreur = "Informations modifiées.";
+      }
+  }
+}
+
 }
 ?>
 
@@ -27,19 +109,13 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="../../Style/ModifProfil.css" />
-    <link rel="stylesheet" type="text/css" href="/Style/Footer.css" />
-
+      href="/Style/ModifProfil.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/Style/Footer.css" />
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
       href="/Style/Connected.css" />
-      <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="/Style/Settings.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
@@ -90,7 +166,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu"href="/Views/Logged"><svg
+            <a class="row_menu"href="/Views/Logged/Settings.php"><svg
               class="iconsMenu"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -124,7 +200,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
           </div>
         </div>
         <div class="disconnect">
-          <a class="disconnect" href="/index.php"
+          <a class="disconnect" href="/Views/Unlogged/index.php"
             ><svg
               class="iconsMenu"
               xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +245,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
         <div class="bgPage">
           <div class="firstRow"><img class="imgProfil" src="/img/image 17.png" alt="Profil" />
           <h1>Modification du Profil</h1></div>
-          <div class="allForms">
+          <form class="allForms" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <div class="twoForm">
               <div class="formsSpe">
                 <label for="Prénom">
@@ -179,7 +255,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                   class="input-container"
                   type="text"
                   name="prenom"
-                  placeholder="John" />
+                  placeholder="<?php echo $prenom; ?>" />
               </div>
               <div class="formsSpe">
                 <label for="Nom">
@@ -190,7 +266,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                   class="input-field"
                   type="text"
                   name="nom"
-                  placeholder="Doe" />
+                  placeholder="<?php echo $nom; ?>" />
               </div>
             </div>
             <div class="forms">
@@ -201,7 +277,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                 class="input-container"
                 type="email"
                 name="email"
-                placeholder="johndoe@youremail.com" />
+                placeholder="<?php echo $email; ?>" />
             </div>
             <div class="forms">
               <label for="Date de naissance">
@@ -210,8 +286,8 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
               <input
                 class="input-container"
                 type="date"
-                name="date of birth"
-                placeholder="24/26/2000" />
+                name="date_of_birth"
+                placeholder="<?php echo $birthdate; ?>" />
             </div>
             <div class="forms">
               <label for="mot de passe">
@@ -230,46 +306,53 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
               <input
                 class="input-container"
                 type="password"
-                name="password"
+                name="confirmpassword"
                 placeholder="*********"/>
             </div>
-          </div>
-          <div class="buttonPlace">
-            <a href="#" class="button13">Modifier</a>
-          </div>
+            <div class="buttonPlace">
+               <a href="#" onclick="document.querySelector('form').submit();" class="button">Modifier</a>
+            </div>
+          </form>
+          <?php if (isset($erreur)): ?>
+                <p class="erreur"><?php echo $erreur; ?></p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
-<footer>
-      <div class="footer">
-        <div class="listFooter">
-          <div class="BeCareful">
-            <p class="title">BeCareful</p>
-            <a class="link" href="/Views/Unlogged/APropos.html"><p>Qui sommes-nous ?</p></a>
-            <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</p>
-            <p>Horaires : Du lundi au samedi de 9h à 18h</p>
-            <a class="link" href="/Views/Unlogged/Notre_Produit.html"><p>Notre Produit</p></a>
+    <footer>
+      <footer>
+        <div class="footer">
+          <div class="listFooter">
+            <div class="BeCareful">
+              <p class="titre2">BeCareful</p>
+              <a class="link" href="/Views/Unlogged/APropos.html"><p>Qui sommes-nous ?</p></a>
+              <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moupneaux</p>
+              <p>Horaires : Du lundi au samedi de 9h à 18h</p>
+              <a class="link" href="/Views/Unlogged/Notre_Produit.html"><p>Notre Produit</p></a>
+            </div>
           </div>
-        </div>
-        <div>
-          <div class="BeCareful">
-            <p class="title">Aide</p>
-            <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
-            <p>© BeCareful 2023</p>
-          </div>
-        </div>
-        <div class="BeCareful">
-          <h3></h3>
           <div>
-            <p class="title">Conditions D'utilisations</p>
-            
-                        <a class="link" href="/Views/Unlogged/Politique.html"><p>Politique de confidentialité</p>
+            <div class="BeCareful">
+              <p class="titre2">Aide</p>
+              <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
+    
+              <p>© BeCareful 2023</p>
+            </div>
+          </div>
+          <div class="BeCareful">
+            <h3></h3>
+            <div>
+              <p class="titre2">Conditions D'utilisations</p>
+              
+                          <a class="link" href="/Views/Unlogged/Politique.html">
+                                        <p>Politique de confidentialité</p>
 </a>
 
 <a class="link" href="/Views/Unlogged/CGU.html"><p>CGU</p></a>
+
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
   </body>
 </html>
