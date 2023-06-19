@@ -200,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
         </div>
         <div class="disconnect">
-          <a class="disconnect" href="/Views/Unlogged/index.php"
+          <a class="disconnect" href="/index.php"
             ><svg
               class="iconsMenu"
               xmlns="http://www.w3.org/2000/svg"
