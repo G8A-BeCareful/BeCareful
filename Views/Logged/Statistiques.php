@@ -7,7 +7,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     $user_id = $_SESSION['user_id'];
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
-
+    $admin = $_SESSION['admin'];
   
 } else {
     // Rediriger l'utilisateur s'il n'est pas connecté
@@ -103,18 +103,20 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/AdminFAQ.html"
-              ><svg xmlns="http://www.w3.org/2000/svg" fill="none" 
-              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
-              class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" 
-  d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 
-  0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
-</svg>
-
-              <h3>Administrateur</h3></a
-            >
-          </div>
+           <?php
+              if ($admin)
+                {
+            ?>
+            <a class="row_menu" href="/Views/Logged/AdminFAQ.php">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+              </svg>
+              <h3>Administrateur</h3>
+            </a>
+           <?php
+             }
+            ?>
+         </div>
         </div>
         <div class="disconnect">
           <a class="disconnect" href="/index.php"

@@ -46,17 +46,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             session_destroy();
             session_start();
 
-            $query = "SELECT id, firstname, lastname FROM Users WHERE email = '$email'";
+            $query = "SELECT * FROM Users WHERE email = '$email'";
             $result = mysqli_query($link, $query);
             $row = mysqli_fetch_assoc($result);
             $idFromDB = $row['id'];
             $prenomFromDB = $row['firstname'];
             $nomFromDB = $row['lastname'];
+            $emailFromDB = $row['email'];
+            $birthdateFromDB = $row['birthdate'];
+            $adminFromDB = $row['administrator'];
+            
 
             // Stocker les valeurs de prénom et de nom dans les variables de session
             $_SESSION['user_id'] = $idFromDB;
             $_SESSION['prenom'] = $prenomFromDB;
             $_SESSION['nom'] = $nomFromDB;
+            $_SESSION['email'] = $emailFromDB;
+            $_SESSION['birthdate'] = $birthdateFromDB;
+            $_SESSION['admin'] = $adminFromDB;
             header("Location: ../Logged/Dashboard.php");
             exit();
         } else{

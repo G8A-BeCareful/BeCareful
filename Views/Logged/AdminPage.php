@@ -7,7 +7,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     $user_id = $_SESSION['user_id'];
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
-
+    $admin = $_SESSION['admin'];
   
 } else {
     // Rediriger l'utilisateur s'il n'est pas connecté
@@ -129,7 +129,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/AdminFAQ.html"
+            <a class="row_menu" href="/Views/Logged/AdminFAQ.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -203,18 +203,18 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             </div>
             <div class="buttonRow">
               <div class="buttonPlace">
-                <a href="/Views/Logged/AdminFAQ.html" class="button13">FAQ</a>
+                <a href="/Views/Logged/AdminFAQ.php" class="button13">FAQ</a>
               </div>
               <div class="buttonPlace">
-                <a href="/Views/Logged/AdminPage.html" class="button13">Administration</a>
+                <a href="/Views/Logged/AdminPage.php" class="button13">Administration</a>
               </div>
             </div>
             <div class="buttonRow1">
               <div class="buttonPlace">
-                <a href="/Views/Logged/AdminFAQ.html" class="button13">Passer Admin</a>
+                <a href="/Views/Logged/AdminFAQ.php" class="button13">Passer Admin</a>
               </div>
               <div class="buttonPlace">
-                <a href="AdminPage.html" class="button12">Supprimer le compte</a>
+                <a href="AdminPage.php" class="button12">Supprimer le compte</a>
               </div>
             </div>
           </div>
