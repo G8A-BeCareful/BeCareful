@@ -35,17 +35,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FAQ</title>
-    <link rel="stylesheet" type="text/css" href="/Style/Header.css" />
-       <link rel="stylesheet" type="text/css" href="/Style/Footer.css" />
+    <link rel="stylesheet" type="text/css" href="/Vue/Style/Header.css" />
+       <link rel="stylesheet" type="text/css" href="/Vue/Style/Footer.css" />
 
 
-    <link href="/Style/FAQ.css" type="text/css" rel="stylesheet" />
+    <link href="/Vue/Style/FAQ.css" type="text/css" rel="stylesheet" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
   </head>
   <body>
- <header>
+     <header>
       <div class="header">
         <div class="logo">
           <a href="/index.php" class="logo">
@@ -57,14 +57,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="checkbox" id="toggle" />
         <div class="navbar">
           <a href="/index.php" class="nav">Accueil</a>
-          <a href="/Views/Unlogged/Notre_Produit.html" class="nav">Notre Produit</a>
-          <a href="/Views/Unlogged/APropos.html" class="nav">À Propos</a>
-          <a href="/Views/Unlogged/ContactezNous.html" class="nav">Nous Contacter</a>
+          <a href="/Vue/Notre_Produit.html" class="nav">Notre Produit</a>
+          <a href="/Vue/APropos.html" class="nav">À Propos</a>
+          <a href="/Vue/ContactezNous.html" class="nav">Nous Contacter</a>
         </div>
         <div class="header-right">
-          <a href="/Views/Unlogged/Inscription.php" class="nav">S'Inscrire</a>
+          <a href="/Controller/Inscription.php" class="nav">S'Inscrire</a>
           <div class="buttonPlace">
-            <a href="/Views/Unlogged/Connexion.php" class="button">Se Connecter</a>
+            <a href="/Controller/Connexion.php" class="button">Se Connecter</a>
           </div>
         </div>
       </div>

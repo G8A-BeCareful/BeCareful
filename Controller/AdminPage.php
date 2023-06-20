@@ -11,66 +11,97 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
   
 } else {
     // Rediriger l'utilisateur s'il n'est pas connecté
-    header("Location: ../Unlogged/connexion.php");
+    header("Location: Connexion.php");
     exit();
 }
-// Vérifier si le bouton de suppression a été cliqué
-if (isset($_POST['delete_account'])) {
-  
-  /* Attempt MySQL server connection. Assuming you are running MySQL
-    server with default setting (user 'root' with no password) */
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset($_POST['selected_user'])) {
+    $selectedUserID = $_POST['selected_user'];
+    if (isset($_POST['passer_admin'])) {
+      
+      $link = mysqli_connect("localhost", "root", "", "dbsite");
+
+      if ($link === false) {
+          die("ERROR: Could not connect. " . mysqli_connect_error());
+          $message = "Erreur de connexion à la base de données.";
+      }
+
+      $updateQuery = "UPDATE Users SET administrator = 1 WHERE id = '$selectedUserID'";
+
+      if (mysqli_query($link, $updateQuery)) {
+          $message = "Utilisateur passé admin avec succès.";
+      } else {
+          $message = "Erreur lors de la mise à jour du statut admin.";
+      }
+
+      mysqli_close($link);
+
+  } elseif (isset($_POST['supprimer'])) {
+
     $link = mysqli_connect("localhost", "root", "", "dbsite");
- 
-    // Check connection
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-        $erreur = "Erreur de connexion à la base de donnée.";
-    }
- 
-    // Attempt insert query execution
-    $sql = "DELETE FROM users WHERE id = $user_id";
 
-    if (mysqli_query($link, $sql)){
+      if ($link === false) {
+          die("ERROR: Could not connect. " . mysqli_connect_error());
+          $message = "Erreur de connexion à la base de données.";
+      }
 
-      session_unset();
-      session_destroy();
-      header("Location: ../Unlogged//index.php");
-      exit();
-    } else{
-      $erreur = "Erreur d'envoie de données. Veuillez réessayer ultérieurement.";
-    }
+      $DeleteQuery = "DELETE FROM Users WHERE id = '$selectedUserID'";
 
-  // Close connection
-  mysqli_close($link);
+      if (mysqli_query($link, $DeleteQuery)) {
+          $message = "Utilisateur supprimé avec succès.";
+      } else {
+          $message = "Erreur lors de la suppression de compte.";
+      }
+
+      mysqli_close($link);
+
+  } else {
+    $message = "Erreur inconnue.";
+  }
+  }
+  else {
+    $message = "Veuillez choisir un utilisateur.";
+  }
+
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <script>
-        function deleteAccount() {
-            if (confirm("Êtes-vous sûr de vouloir supprimer votre compte ?")) {
-                document.getElementById("deleteForm").submit();
+      function uncheckOtherCheckboxes(checkbox) {
+         var checkboxes = document.getElementsByName('selected_user');
+         for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i] !== checkbox) {
+                checkboxes[i].checked = false;
             }
-        }
+         }
+      }
+
+      function submitForm(action) {
+        var form = document.getElementById('adminForm');
+
+        var actionInput = document.createElement('input');
+        actionInput.type = 'hidden';
+        actionInput.name = (action === 'passer_admin') ? 'passer_admin' : 'supprimer';
+        actionInput.value = 'true';
+
+        form.appendChild(actionInput);
+
+        form.submit();
+      }
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Paramètres</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="/Style/Settings.css">
-    <link rel="stylesheet" type="text/css" href="/Style/Footer.css" />
+    <title>Page Administrateur</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/Vue/Style/AdminPage.css" />
+    <link rel="stylesheet" type="text/css" href="/Vue/Style/Footer.css" />
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="/Style/Connected.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/Vue/Style/Settings.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/Vue/Style/Connected.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
@@ -85,7 +116,7 @@ if (isset($_POST['delete_account'])) {
         <div>
           <h5 class="menuP">Menu Principal</h5>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/Dashboard.php"
+            <a class="row_menu" href="/Controller/Dashboard.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +134,7 @@ if (isset($_POST['delete_account'])) {
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/Statistiques.php"
+            <a class="row_menu" href="/Controller/Statistiques.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +152,7 @@ if (isset($_POST['delete_account'])) {
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu para" href="/Views/Logged/Settings.php"
+            <a class="row_menu" href="/controller/Settings.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -143,20 +174,23 @@ if (isset($_POST['delete_account'])) {
             >
           </div>
           <div class="row_menu">
-           <?php
-              if ($admin)
-                {
-            ?>
-            <a class="row_menu" href="/Views/Logged/AdminFAQ.php">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+            <a class="row_menu" href="/Controller/AdminFAQ.php"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 
+  0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
               </svg>
-              <h3>Administrateur</h3>
-            </a>
-           <?php
-             }
-            ?>
-         </div>
+              <h3>Administrateur</h3></a
+            >
+          </div>
         </div>
         <div class="disconnect">
           <a class="disconnect" href="/index.php"
@@ -180,11 +214,14 @@ if (isset($_POST['delete_account'])) {
       <div class="column2">
         <div class="section_haut">
           <div class="bonjourDate">
-            <h2 class="bonjour">Bonjour <?php echo $prenom . ' ' . $nom; ?></h2>
-            <h5>Jeudi 27 Avril 2023</h5>
+            <h2 class="bonjour">
+              Bonjour
+              <?php echo $prenom . ' ' . $nom; ?>
+            </h2>
+            <h5>Mardi 20 Juin 2023</h5>
           </div>
           <div class="profilButton">
-            <a class="profile_menu" href="/Views/Logged/ModifProfil.php"
+            <a class="profile_menu" href="/Controller/ModifProfil.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -204,88 +241,82 @@ if (isset($_POST['delete_account'])) {
         <div class="bgPage">
           <div class="columnAll">
             <div class="firstRow">
-              <img class="imgProfil" src="/img/image 18.png" alt="Profil" />
-              <h1>Paramètres</h1>
+              <div>
+                <img class="bank" src="/img/imeuble.png" alt="bank" />
+              </div>
+              <h1>Administrateur</h1>
             </div>
-            <div class="otherRow">
-              <h3 class="titleSettings">Se désabonner de la newsletter</h3>
-              <div class="boxSlide">
-                <label class="switch switch1" for="checkbox1">
-                  <input type="checkbox" id="checkbox1" />
-                  <div class="slider slider1 round"></div>
-                </label>
+            <div class="buttonRow">
+              <div class="buttonPlace">
+                <a href="/Controller/AdminFAQ.php" class="button13">FAQ</a>
+              </div>
+              <div class="buttonPlace">
+                <a href="/Controller/AdminPage.php" class="button13">Administration</a>
               </div>
             </div>
-            <div class="otherRow">
-              <h3 class="titleSettings">Dark mode</h3>
-              <div class="boxSlide">
-                <label class="switch switch2" for="checkbox2">
-                  <input type="checkbox" id="checkbox2" />
-                  <div class="slider slider2 round"></div>
-                </label>
+            <form id="adminForm" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+              <div class="tableUsers">
+                <?php
+                  $link = mysqli_connect("localhost", "root", "", "dbsite"); 
+                  // Check connection
+                  if($link === false){
+                      die("ERROR: Could not connect. " . mysqli_connect_error());
+                      $erreur = "Erreur de connexion à la base de donnée.";
+                  }
+            
+                  $checkQuery = "SELECT * FROM Users";
+                  $result = mysqli_query($link, $checkQuery);
+
+                  if (mysqli_num_rows($result) > 0) {
+                    echo "<table>";
+                    echo "<tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Select</th></tr>";
+                  
+                    while ($row = mysqli_fetch_assoc($result)) {
+                      echo "<tr>";
+                      echo "<td>" . $row['id'] . "</td>";
+                      echo "<td>" . $row['lastname'] . "</td>";
+                      echo "<td>" . $row['firstname'] . "</td>";
+                      echo '<td><input type="checkbox" name="selected_user" value="' . $row['id'] . '" onclick="uncheckOtherCheckboxes(this)"></td>';
+                      echo "</tr>";
+                    }
+                  
+                    echo "</table>";
+                  } else {
+                    echo "Aucun utilisateur trouvé.";
+                  }
+                ?>
               </div>
-            </div>
-            <div class="otherRow">
-              <h3 class="titleSettings">Connexion automatique</h3>
-              <div class="boxSlide">
-                <label class="switch switch3" for="checkbox3">
-                  <input type="checkbox" id="checkbox3" />
-                  <div class="slider slider3 round"></div>
-                </label>
+            </form>
+              <div class="buttonRow1">
+                <div class="buttonPlace">
+                  <a href="#" name="admin" class="button13" onclick="submitForm('passer_admin')" >Passer Admin</a>
+                </div>
+                <div class="buttonPlace">
+                  <a href="#" name="supprimer" class="button12" onclick="submitForm('supprimer')" >Supprimer le compte</a>
+                </div>
               </div>
-            </div>
-            <div class="otherRow">
-              <h3 class="titleSettings">Désactiver la montre</h3>
-              <div class="boxSlide">
-                <label class="switch switch4" for="checkbox4">
-                  <input type="checkbox" id="checkbox4" />
-                  <div class="slider slider4 round"></div>
-                </label>
-              </div>
-            </div>
-            <div class="otherRow">
-              <h3 class="titleSettings">Effacer les cookies</h3>
-              <div class="boxSlide">
-                <label class="switch switch5" for="checkbox5">
-                  <input type="checkbox" id="checkbox5" />
-                  <div class="slider slider5 round"></div>
-                </label>
-              </div>
-            </div>
-            <div class="otherRow">
-              <h3 class="titleSettings">Supprimer définitivement le compte</h3>
-              <div class="buttonPlace1">
-                <a onclick="deleteAccount()" href="#" class="button12">Supprimer</a>
-              </div>
-              <form id="deleteForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <input type="hidden" name="delete_account">
-              </form>
-            </div>
-            <div class="buttonPlace">
-              <a href="#" class="button13">Confirmer</a>
-            </div>
-            <?php if (isset($erreur)): ?>
-                <p class="erreur"><?php echo $erreur; ?></p>
+            <?php if (isset($message)): ?>
+                <p class="message"><?php echo $message; ?></p>
             <?php endif; ?>
           </div>
         </div>
       </div>
     </div>
-    <footer>
+<footer>
       <div class="footer">
         <div class="listFooter">
           <div class="BeCareful">
             <p class="title">BeCareful</p>
-            <a class="link" href="/Views/Unlogged/APropos.html"><p>Qui sommes-nous ?</p></a>
+            <a class="link" href="/Vue/APropos.html"><p>Qui sommes-nous ?</p></a>
             <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</p>
             <p>Horaires : Du lundi au samedi de 9h à 18h</p>
-            <a class="link" href="/Views/Unlogged/Notre_Produit.html"><p>Notre Produit</p></a>
+            <a class="link" href="/Vue/Notre_Produit.html"><p>Notre Produit</p></a>
           </div>
         </div>
         <div>
           <div class="BeCareful">
             <p class="title">Aide</p>
-            <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
+            <a class="link" href="/Controller/FAQ.php"><p>FAQ</p></a>
             <p>© BeCareful 2023</p>
           </div>
         </div>
@@ -294,10 +325,10 @@ if (isset($_POST['delete_account'])) {
           <div>
             <p class="title">Conditions D'utilisations</p>
             
-                        <a class="link" href="/Views/Unlogged/Politique.html"><p>Politique de confidentialité</p>
+                        <a class="link" href="/Vue/Politique.html"><p>Politique de confidentialité</p>
 </a>
 
-<a class="link" href="/Views/Unlogged/CGU.html"><p>CGU</p></a>
+<a class="link" href="/Vue/CGU.html"><p>CGU</p></a>
           </div>
         </div>
       </div>

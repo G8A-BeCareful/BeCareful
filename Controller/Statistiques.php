@@ -11,97 +11,26 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
   
 } else {
     // Rediriger l'utilisateur s'il n'est pas connecté
-    header("Location: ../Unlogged/connexion.php");
+    header("Location: Connexion.php");
     exit();
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if (isset($_POST['selected_user'])) {
-    $selectedUserID = $_POST['selected_user'];
-    if (isset($_POST['passer_admin'])) {
-      
-      $link = mysqli_connect("localhost", "root", "", "dbsite");
-
-      if ($link === false) {
-          die("ERROR: Could not connect. " . mysqli_connect_error());
-          $message = "Erreur de connexion à la base de données.";
-      }
-
-      $updateQuery = "UPDATE Users SET administrator = 1 WHERE id = '$selectedUserID'";
-
-      if (mysqli_query($link, $updateQuery)) {
-          $message = "Utilisateur passé admin avec succès.";
-      } else {
-          $message = "Erreur lors de la mise à jour du statut admin.";
-      }
-
-      mysqli_close($link);
-
-  } elseif (isset($_POST['supprimer'])) {
-
-    $link = mysqli_connect("localhost", "root", "", "dbsite");
-
-      if ($link === false) {
-          die("ERROR: Could not connect. " . mysqli_connect_error());
-          $message = "Erreur de connexion à la base de données.";
-      }
-
-      $DeleteQuery = "DELETE FROM Users WHERE id = '$selectedUserID'";
-
-      if (mysqli_query($link, $DeleteQuery)) {
-          $message = "Utilisateur supprimé avec succès.";
-      } else {
-          $message = "Erreur lors de la suppression de compte.";
-      }
-
-      mysqli_close($link);
-
-  } else {
-    $message = "Erreur inconnue.";
-  }
-  }
-  else {
-    $message = "Veuillez choisir un utilisateur.";
-  }
-
-}
-
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      function uncheckOtherCheckboxes(checkbox) {
-         var checkboxes = document.getElementsByName('selected_user');
-         for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i] !== checkbox) {
-                checkboxes[i].checked = false;
-            }
-         }
-      }
-
-      function submitForm(action) {
-        var form = document.getElementById('adminForm');
-
-        var actionInput = document.createElement('input');
-        actionInput.type = 'hidden';
-        actionInput.name = (action === 'passer_admin') ? 'passer_admin' : 'supprimer';
-        actionInput.value = 'true';
-
-        form.appendChild(actionInput);
-
-        form.submit();
-      }
-    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page Administrateur</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="/Style/AdminPage.css" />
-    <link rel="stylesheet" type="text/css" href="/Style/Footer.css" />
+    <title>Statistiques</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/Vue/Style/Connected.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/Vue/Style/Stats.css" />
+    <link rel="stylesheet" type="text/css" href="/Vue/Style/Footer.css" />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="/Style/Settings.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/Style/Connected.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
@@ -116,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div>
           <h5 class="menuP">Menu Principal</h5>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/Dashboard.php"
+            <a class="row_menu" href="/Controller/Dashboard.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/Statistiques.php"
+            <a class="row_menu" href="/Controller/Statistiques.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -152,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/Settings.php"
+            <a class="row_menu" href="/controller/Settings.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/AdminFAQ.php"
+            <a class="row_menu" href="/Controller/AdminFAQ.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -218,10 +147,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               Bonjour
               <?php echo $prenom . ' ' . $nom; ?>
             </h2>
-            <h5>Jeudi 27 Avril 2023</h5>
+            <h5>Mardi 20 Juin 2023</h5>
           </div>
           <div class="profilButton">
-            <a class="profile_menu" href="/Views/Logged/ModifProfil.php"
+            <a class="profile_menu" href="/Controller/ModifProfil.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -238,66 +167,200 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             >
           </div>
         </div>
-        <div class="bgPage">
-          <div class="columnAll">
-            <div class="firstRow">
-              <div>
-                <img class="bank" src="/img/imeuble.png" alt="bank" />
+        <div class="Statisitiques">
+          <div class="row1">
+            <div class="calendar">
+              <div class="month">
+                <a href="#" class="nav"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </a>
+                <div>Avril <span class="year">2023</span></div>
+                <a href="#" class="nav"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </a>
               </div>
-              <h1>Administrateur</h1>
+              <div class="days">
+                <span>Lun</span>
+                <span>Mar</span>
+                <span>Mer</span>
+                <span>Jeu</span>
+                <span>Ven</span>
+                <span>Sam</span>
+                <span>Dim</span>
+              </div>
+              <div class="dates">
+                <button>
+                  <time>1</time>
+                </button>
+                <button>
+                  <time>2</time>
+                </button>
+                <button>
+                  <time>3</time>
+                </button>
+                <button>
+                  <time>4</time>
+                </button>
+                <button>
+                  <time>5</time>
+                </button>
+                <button>
+                  <time>6</time>
+                </button>
+                <button>
+                  <time>7</time>
+                </button>
+                <button>
+                  <time>8</time>
+                </button>
+                <button>
+                  <time>9</time>
+                </button>
+                <button>
+                  <time>10</time>
+                </button>
+                <button>
+                  <time>11</time>
+                </button>
+                <button>
+                  <time>12</time>
+                </button>
+                <button>
+                  <time>13</time>
+                </button>
+                <button>
+                  <time>14</time>
+                </button>
+                <button>
+                  <time>15</time>
+                </button>
+                <button>
+                  <time>16</time>
+                </button>
+                <button>
+                  <time>17</time>
+                </button>
+                <button class="today">
+                  <time>18</time>
+                </button>
+                <button>
+                  <time>19</time>
+                </button>
+                <button>
+                  <time>20</time>
+                </button>
+                <button>
+                  <time>21</time>
+                </button>
+                <button>
+                  <time>22</time>
+                </button>
+                <button>
+                  <time>23</time>
+                </button>
+                <button>
+                  <time>24</time>
+                </button>
+                <button>
+                  <time>25</time>
+                </button>
+                <button>
+                  <time>26</time>
+                </button>
+                <button>
+                  <time>27</time>
+                </button>
+                <button>
+                  <time>28</time>
+                </button>
+                <button>
+                  <time>29</time>
+                </button>
+                <button>
+                  <time>30</time>
+                </button>
+                <button>
+                  <time>31</time>
+                </button>
+              </div>
             </div>
-            <div class="buttonRow">
-              <div class="buttonPlace">
-                <a href="/Views/Logged/AdminFAQ.php" class="button13">FAQ</a>
+            <div class="capteurs">
+              <div class="row_1">
+                <div class="boxTitle">
+                  <h6 class="titreTemp">Quel capteur voulez-vous examiner ?</h6>
+                  <div class="arrowRow">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6 arrow">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                    <h6 class="titreTemp">Température</h6>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6 arrow">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <div class="buttonPlace">
-                <a href="/Views/Logged/AdminPage.php" class="button13">Administration</a>
+              <div class="row_2">
+                <div class="box4">
+                  <h6 class="titreTemp">Valeur Actuelle :</h6>
+                </div>
+                <div class="box4 margeF">
+                  <div class="dotGreen"></div>
+                  <h6 class="titreBlue">Humidité</h6>
+                  <p class="commentaire">52 %</p>
+                </div>
+                <div class="box4 margeM">
+                  <h6 class="titreTemp">Moyenne sur cette période :</h6>
+                </div>
+                <div class="box4">
+                  <div class="dotOrange"></div>
+                  <h6 class="titreBlue">Humidité</h6>
+                  <p class="commentaire">73 %</p>
+                </div>
               </div>
             </div>
-            <form id="adminForm" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-              <div class="tableUsers">
-                <?php
-                  $link = mysqli_connect("localhost", "root", "", "dbsite"); 
-                  // Check connection
-                  if($link === false){
-                      die("ERROR: Could not connect. " . mysqli_connect_error());
-                      $erreur = "Erreur de connexion à la base de donnée.";
-                  }
-            
-                  $checkQuery = "SELECT * FROM Users";
-                  $result = mysqli_query($link, $checkQuery);
-
-                  if (mysqli_num_rows($result) > 0) {
-                    echo "<table>";
-                    echo "<tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Select</th></tr>";
-                  
-                    while ($row = mysqli_fetch_assoc($result)) {
-                      echo "<tr>";
-                      echo "<td>" . $row['id'] . "</td>";
-                      echo "<td>" . $row['lastname'] . "</td>";
-                      echo "<td>" . $row['firstname'] . "</td>";
-                      echo '<td><input type="checkbox" name="selected_user" value="' . $row['id'] . '" onclick="uncheckOtherCheckboxes(this)"></td>';
-                      echo "</tr>";
-                    }
-                  
-                    echo "</table>";
-                  } else {
-                    echo "Aucun utilisateur trouvé.";
-                  }
-                ?>
-              </div>
-            </form>
-              <div class="buttonRow1">
-                <div class="buttonPlace">
-                  <a href="#" name="admin" class="button13" onclick="submitForm('passer_admin')" >Passer Admin</a>
-                </div>
-                <div class="buttonPlace">
-                  <a href="#" name="supprimer" class="button12" onclick="submitForm('supprimer')" >Supprimer le compte</a>
-                </div>
-              </div>
-            <?php if (isset($message)): ?>
-                <p class="message"><?php echo $message; ?></p>
-            <?php endif; ?>
+          </div>
+          <div class="row2">
+            <h6 class="Title1">Taux d'humidité</h6>
           </div>
         </div>
       </div>
@@ -307,20 +370,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="listFooter">
           <div class="BeCareful">
             <p class="title">BeCareful</p>
-            <a class="link" href="/Views/Unlogged/APropos.html"
-              ><p>Qui sommes-nous ?</p></a
-            >
+            <a class="link" href="/Vue/APropos.html"><p>Qui sommes-nous ?</p></a>
             <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</p>
             <p>Horaires : Du lundi au samedi de 9h à 18h</p>
-            <a class="link" href="/Views/Unlogged/Notre_Produit.html"
-              ><p>Notre Produit</p></a
-            >
+            <a class="link" href="/Vue/Notre_Produit.html"><p>Notre Produit</p></a>
           </div>
         </div>
         <div>
           <div class="BeCareful">
             <p class="title">Aide</p>
-            <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
+            <a class="link" href="/Controller/FAQ.php"><p>FAQ</p></a>
             <p>© BeCareful 2023</p>
           </div>
         </div>
@@ -328,12 +387,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <h3></h3>
           <div>
             <p class="title">Conditions D'utilisations</p>
+            
+                        <a class="link" href="/Vue/Politique.html"><p>Politique de confidentialité</p>
+</a>
 
-            <a class="link" href="/Views/Unlogged/Politique.html"
-              ><p>Politique de confidentialité</p>
-            </a>
-
-            <a class="link" href="/Views/Unlogged/CGU.html"><p>CGU</p></a>
+<a class="link" href="/Vue/CGU.html"><p>CGU</p></a>
           </div>
         </div>
       </div>

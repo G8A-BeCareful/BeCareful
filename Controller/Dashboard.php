@@ -11,7 +11,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
   
 } else {
     // Rediriger l'utilisateur s'il n'est pas connecté
-    header("Location: ../Unlogged/connexion.php");
+    header("Location: Connexion.php");
     exit();
 }
 ?>
@@ -57,7 +57,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
       type="text/css"
       media="screen"
       href="../../Style/Dashboard.css" />
-    <link rel="stylesheet" type="text/css" href="/Style/Footer.css" />
+    <link rel="stylesheet" type="text/css" href="/Vue/Style/Footer.css" />
 
     <link
       rel="stylesheet"
@@ -78,7 +78,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
         <div>
           <h5 class="menuP">Menu Principal</h5>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/Dashboard.php"
+            <a class="row_menu" href="/Controller/Dashboard.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href= "/Views/Logged/Statistiques.php"
+            <a class="row_menu" href="/Controller/Statistiques.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-            <a class="row_menu" href="/Views/Logged/Settings.php"
+            <a class="row_menu" href="/controller/Settings.php"
               ><svg
                 class="iconsMenu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -136,20 +136,23 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
-           <?php
-              if ($admin)
-                {
-            ?>
-            <a class="row_menu" href="/Views/Logged/AdminFAQ.php">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+            <a class="row_menu" href="/Controller/AdminFAQ.php"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 
+  0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
               </svg>
-              <h3>Administrateur</h3>
-            </a>
-           <?php
-             }
-            ?>
-         </div>
+              <h3>Administrateur</h3></a
+            >
+          </div>
         </div>
         <div class="disconnect">
           <a class="disconnect" href="/index.php"
@@ -173,11 +176,14 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
       <div class="column2">
         <div class="section_haut">
           <div class="bonjourDate">
-            <h2 class="bonjour">Bonjour <?php echo $prenom . ' ' . $nom; ?></h2>
-            <h5>Jeudi 27 Avril 2023</h5>
+            <h2 class="bonjour">
+              Bonjour
+              <?php echo $prenom . ' ' . $nom; ?>
+            </h2>
+            <h5>Mardi 20 Juin 2023</h5>
           </div>
           <div class="profilButton">
-            <a class="profile_menu" href="/Views/Logged/ModifProfil.php"
+            <a class="profile_menu" href="/Controller/ModifProfil.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -311,16 +317,16 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
         <div class="listFooter">
           <div class="BeCareful">
             <p class="title">BeCareful</p>
-            <a class="link" href="/Views/Unlogged/APropos.html"><p>Qui sommes-nous ?</p></a>
+            <a class="link" href="/Vue/APropos.html"><p>Qui sommes-nous ?</p></a>
             <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</p>
             <p>Horaires : Du lundi au samedi de 9h à 18h</p>
-            <a class="link" href="/Views/Unlogged/Notre_Produit.html"><p>Notre Produit</p></a>
+            <a class="link" href="/Vue/Notre_Produit.html"><p>Notre Produit</p></a>
           </div>
         </div>
         <div>
           <div class="BeCareful">
             <p class="title">Aide</p>
-            <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
+            <a class="link" href="/Controller/FAQ.php"><p>FAQ</p></a>
             <p>© BeCareful 2023</p>
           </div>
         </div>
@@ -329,10 +335,10 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
           <div>
             <p class="title">Conditions D'utilisations</p>
             
-                        <a class="link" href="/Views/Unlogged/Politique.html"><p>Politique de confidentialité</p>
+                        <a class="link" href="/Vue/Politique.html"><p>Politique de confidentialité</p>
 </a>
 
-<a class="link" href="/Views/Unlogged/CGU.html"><p>CGU</p></a>
+<a class="link" href="/Vue/CGU.html"><p>CGU</p></a>
           </div>
         </div>
       </div>
