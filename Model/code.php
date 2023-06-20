@@ -11,40 +11,47 @@ require 'vendor/autoload.php';
 function sendemail($prenom, $nom, $email)
 {
     $mail = new PHPMailer(true);
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' =>false,
+            'allow_self_signed' => true
+        )
+    );
+    $mail->SMTPDebug=0;
     $mail->isSMTP();
     $mail->SMTPAuth = true;
 
-    $mail->Host = 'smtp.sendgrid.net    ';
-    $mail->UserName = 'apikey';
-    $mail->Password = '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';
+    if($mail->SMTPAuth) {
+        $mail->Host = 'smtp.gmail.com';
+        $mail->UserName = 'hector.vizzavona@gmail.com';
+        $mail->Password = 'mmsxsxsiqhuyhvzv';
+    }
 
-    $mail->SMTPSecure = "tls";
-    $mail->Port = 587;
+    $mail->SMTPSecure = "ssl";
+    $mail->Port = 465;
 
-    $mail->setFrom("hector.vizzavona@gmail.com");
+    $mail->From("hector.vizzavona@gmail.com");
     $mail->addAddress($email);
 
-    $mail->isHTML(true);
+    $mail->isHTML(false);
     $mail->Subject = 'BeCareful - Inscritption';
 
-    $email_template = "
-        <h2>Salut $prenom $nom, merci de vous être inscrit sur BeCareful !</h2>
-        <p>Nous sommes très heureux de vous compter parmi nous !</p>
-        <br/><br/>";
-
-    $mail->Body = $email_template;
+    $mail->Body = "Salut" .$prenom.$nom. "merci de vous être inscrit sur BeCareful !
+    Nous sommes très heureux de vous compter parmi nous !";
     $mail->send();
 }
 
-// if(isset($_POST['register_btn']))
-// {
-//     $prenom = $_POST['prenom'];
-//     $nom = $_POST['nom'];
-//     $email = $_POST['email'];
-//     $password = $_POST['password'];
-//     $confirmPassword = $_POST['confirmPassword'];
-//     sendemail("$prenom", "$nom", "$email");
-//     echo "Email envoyé";}
+if(isset($_POST['register_btn']))
+{
+    $prenom = $_POST['prenom'];
+    $nom = $_POST['nom'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+    sendemail("$prenom", "$nom", "$email");
+    echo "Email envoyé";
+}
 
 
     // $check_email_query = "SELECT email FROM Users WHERE email = '$email' LIMIT 1";

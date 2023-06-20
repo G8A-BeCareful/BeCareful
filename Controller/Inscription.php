@@ -94,13 +94,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="Logop">
             <div class="arrow">
                 <a href="/index.php"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                  stroke-width="1.5" stroke="currentColor"
-                                                  class="w-6 h-6">
+                         stroke-width="1.5" stroke="currentColor"                    
+                          class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
                     </svg></a>
             </div>
         </div>
-        <form method="post" action="/Model/code.php">
+        <form method="post" action="">
             <div class="rowLogo">
                 <img src="/img/Logo-becareful.png" alt="Logo" class="imgLogo"/>
                 <h2 class="becareful">Becareful</h2>

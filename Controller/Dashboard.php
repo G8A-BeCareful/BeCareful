@@ -56,14 +56,14 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="../../Style/Dashboard.css" />
+      href="/Vue/Style/Dashboard.css" />
     <link rel="stylesheet" type="text/css" href="/Vue/Style/Footer.css" />
 
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="../../Style/Connected.css" />
+      href="/Vue/Style/Connected.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Nunito:wght@500&display=swap");
     </style>
