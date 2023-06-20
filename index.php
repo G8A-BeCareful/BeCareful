@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $username = "root"; // Remplacez par votre nom d'utilisateur de la base de données
 $password = ""; // Remplacez par votre mot de passe de la base de données
-$dbname = "becareful";
+$dbname = "dbsite";
 
 
 // try {

@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </svg></a>
             </div>
         </div>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <form method="post" action="code.php <?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="rowLogo">
                 <img src="/img/Logo-becareful.png" alt="Logo" class="imgLogo"/>
                 <h2 class="becareful">Becareful</h2>

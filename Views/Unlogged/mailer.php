@@ -1,55 +1,22 @@
 <!-- <?php
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-require 'PHPMailer/src/Exception.php';
+require 'vendor/autoload.php'; 
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-function sendConfirmationEmail($recipientEmail, $recipientName) {
-    $mail = new PHPMailer();
-    $mail->isSMTP();
-    $mail->Host = 'your_smtp_host';
-    $mail->Port = 587;
-    $mail->SMTPAuth = true;
-    $mail->Username = 'your_smtp_username';
-    $mail->Password = 'your_smtp_password';
-    $mail->SMTPSecure = 'tls';
-
-    $mail->setFrom('sender@example.com', 'Your Name');
-    $mail->addAddress($recipientEmail, $recipientName);
-
-    $mail->Subject = 'Confirmation Email';
-    $mail->Body = 'Thank you for registering. Your account has been confirmed.';
-
-    if ($mail->send()) {
-        echo 'Confirmation email sent to ' . $recipientEmail . ' successfully.';
-    } else {
-        echo 'Error sending confirmation email to ' . $recipientEmail . ': ' . $mail->ErrorInfo;
+if(isset($_POST['register_btn'])) {
+    $email = new \SendGrid\Mail\Mail(); 
+    $email->setFrom("hector.vizzavona@eleve.isep.fr", "Hector Vizzavona");
+    $email->setSubject("BeCareful - Inscription");
+    $email->addTo($_POST['email']);
+    $email->addContent(
+        "text/html", "<strong>Afin de continuer à utiliser notre plateforme, 
+        veuillez vérifier votre adresse email</strong>"
+    );
+    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+    try {
+        $response = $sendgrid->send($email);
+        print $response->statusCode() . "\n";
+        print_r($response->headers());
+        print $response->body() . "\n";
+    } catch (Exception $e) {
+        echo 'Caught exception: '. $e->getMessage() ."\n";
     }
-}
-
-function sendPasswordResetEmail($recipientEmail, $resetLink) {
-    $mail = new PHPMailer();
-    $mail->isSMTP();
-    $mail->Host = 'your_smtp_host';
-    $mail->Port = 587;
-    $mail->SMTPAuth = true;
-    $mail->Username = 'your_smtp_username';
-    $mail->Password = 'your_smtp_password';
-    $mail->SMTPSecure = 'tls';
-
-    $mail->setFrom('sender@example.com', 'Your Name');
-    $mail->addAddress($recipientEmail);
-
-    $mail->Subject = 'Password Reset';
-    $mail->Body = 'Click the link below to reset your password: ' . $resetLink;
-
-    if ($mail->send()) {
-        echo 'Password reset email sent to ' . $recipientEmail . ' successfully.';
-    } else {
-        echo 'Error sending password reset email to ' . $recipientEmail . ': ' . $mail->ErrorInfo;
-    }
-}
-?> -->
+} -->
