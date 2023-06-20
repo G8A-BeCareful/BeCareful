@@ -1,0 +1,176 @@
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  margin: 0;
+  font-family: "Maven Pro", sans-serif;
+  animation: 3s linear 0.1s colorIt;
+}
+
+form {
+  background-color: #fff;
+  padding: 40px 60px;
+  border-radius: 10px;
+  min-width: 300px;
+}
+
+form .h1 {
+  color: #0000;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Maven Pro", sans-serif;
+}
+
+form .inputs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+form .inputs input[type="text"],
+input[type="password"] {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  outline-style: solid;
+  outline-color: #3358ea;
+  outline-width: 2px;
+  margin-bottom: 15px;
+  font-family: "Maven Pro", sans-serif;
+}
+form p.inscription {
+  font-size: 14px;
+  margin-top: 30px;
+  color: #878787;
+  font-family: "Maven Pro", sans-serif;
+}
+form p.inscription span {
+  color: #3358ea;
+}
+
+form p.forgot span {
+  color: #3358ea;
+}
+
+form .Logop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Logoi {
+  margin-right: 3%;
+}
+
+.rowLogo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.imgLogo {
+  margin-right: 1%;
+}
+.mainBox {
+  height: 100vh;
+  width: 50%;
+  background-color: white;
+  align-self: auto;
+  flex: none;
+}
+.boxBlue {
+  width: 50%;
+  align-self: auto;
+  height: 100vh;
+  background-image: url("../img/Rond-multi-connexion.png");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: 50% 20%;
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+}
+.content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: linear-gradient(45deg, rgb(0, 85, 255), rgb(22, 0, 82));
+}
+.slogan {
+  font-family: "Maven Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.seConnect {
+  margin-top: 4%;
+  padding: 15px 25px;
+  border-radius: 15px;
+  border: none;
+  font-size: 15px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  background: #3358ea;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: "Maven Pro", sans-serif;
+}
+
+svg {
+  margin-right: 2%;
+  margin-top: 3%;
+  width: 8%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  color: #3358ea;
+}
+
+.Inscris {
+  text-decoration: none;
+}
+
+.Inscris:hover {
+  text-decoration: underline;
+}
+.arrow {
+  width: 700px;
+}
+@media all and (max-width: 1065px) {
+  .boxBlue {
+    display: none;
+  }
+  .mainBox {
+    background-color: transparent;
+  }
+
+  form {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+  }
+  .boutonConnect {
+    padding-top: 20px;
+  }
+  svg {
+    color: #f5f5f5;
+  }
+  svg:hover {
+    color: #3358ea;
+  }
+}
+@media all and (max-width: 699.2px) {
+  .content {
+    width: inherit;
+  }
+}

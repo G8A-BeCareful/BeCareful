@@ -1,0 +1,102 @@
+body {
+  font-family: "Maven Pro", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  animation: 3s linear 0.1s colorIt;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: #f4f4fc;
+}
+
+.columnBubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin-top: 5%;
+  margin-bottom: 1%;
+  gap:30px;
+}
+
+.columnImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.box {
+  width: 85%;
+  background: #ffffff;
+  box-shadow: 19.37px 19.37px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 4%;
+}
+
+.rowIcon {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgSize {
+  margin-left: 2%;
+  width: 7%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.imgSize1 {
+  margin-left: 2%;
+  width: 6%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.imgSize2 {
+  margin-left: 2%;
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.rouge {
+  color: red;
+}
+
+.vert {
+  color: #10c900;
+}
+
+.grey {
+  color: #7e7e7e;
+}
+
+.bigTitle {
+  font-size: 35px;
+  text-align: center;
+  color: #7e7e7e;
+}
+@media all and (max-width: 830px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .columnBubble{
+    order: 1;
+    margin-top: 1%;
+  }
+  .box{
+    width: 140%;
+  }
+ 
+}
