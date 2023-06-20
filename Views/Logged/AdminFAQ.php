@@ -19,36 +19,6 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      function generateRandomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
-
-      function updateRandomNumbers() {
-        var bpmElement = document.getElementById("bpm");
-        var humElement = document.getElementById("hum");
-        var dbElement = document.getElementById("db");
-        var co2Element = document.getElementById("co2");
-        var tempElement = document.getElementById("temp");
-        var tempsElement = document.getElementById("temps");
-
-        var bpm = generateRandomNumber(50, 150);
-        var hum = generateRandomNumber(40, 60);
-        var db = generateRandomNumber(0, 80);
-        var co2 = generateRandomNumber(200, 1000);
-        var temp = generateRandomNumber(0, 28);
-        var temps = generateRandomNumber(1, 59);
-
-        bpmElement.innerHTML = bpm + " BPM";
-        humElement.innerHTML = hum + " %";
-        dbElement.innerHTML = db + " dB";
-        co2Element.innerHTML = co2;
-        tempElement.innerHTML = temp + "°C";
-        tempsElement.innerHTML = temps;
-      }
-
-      setInterval(updateRandomNumbers, 2000);
-    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page Administrateur</title>

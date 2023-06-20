@@ -14,40 +14,85 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     header("Location: ../Unlogged/connexion.php");
     exit();
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset($_POST['selected_user'])) {
+    $selectedUserID = $_POST['selected_user'];
+    if (isset($_POST['passer_admin'])) {
+      
+      $link = mysqli_connect("localhost", "root", "", "dbsite");
+
+      if ($link === false) {
+          die("ERROR: Could not connect. " . mysqli_connect_error());
+          $message = "Erreur de connexion à la base de données.";
+      }
+
+      $updateQuery = "UPDATE Users SET administrator = 1 WHERE id = '$selectedUserID'";
+
+      if (mysqli_query($link, $updateQuery)) {
+          $message = "Utilisateur passé admin avec succès.";
+      } else {
+          $message = "Erreur lors de la mise à jour du statut admin.";
+      }
+
+      mysqli_close($link);
+
+  } elseif (isset($_POST['supprimer'])) {
+
+    $link = mysqli_connect("localhost", "root", "", "dbsite");
+
+      if ($link === false) {
+          die("ERROR: Could not connect. " . mysqli_connect_error());
+          $message = "Erreur de connexion à la base de données.";
+      }
+
+      $DeleteQuery = "DELETE FROM Users WHERE id = '$selectedUserID'";
+
+      if (mysqli_query($link, $DeleteQuery)) {
+          $message = "Utilisateur supprimé avec succès.";
+      } else {
+          $message = "Erreur lors de la suppression de compte.";
+      }
+
+      mysqli_close($link);
+
+  } else {
+    $message = "Erreur inconnue.";
+  }
+  }
+  else {
+    $message = "Veuillez choisir un utilisateur.";
+  }
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <script>
-      function generateRandomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+      function uncheckOtherCheckboxes(checkbox) {
+         var checkboxes = document.getElementsByName('selected_user');
+         for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i] !== checkbox) {
+                checkboxes[i].checked = false;
+            }
+         }
       }
 
-      function updateRandomNumbers() {
-        var bpmElement = document.getElementById("bpm");
-        var humElement = document.getElementById("hum");
-        var dbElement = document.getElementById("db");
-        var co2Element = document.getElementById("co2");
-        var tempElement = document.getElementById("temp");
-        var tempsElement = document.getElementById("temps");
+      function submitForm(action) {
+        var form = document.getElementById('adminForm');
 
-        var bpm = generateRandomNumber(50, 150);
-        var hum = generateRandomNumber(40, 60);
-        var db = generateRandomNumber(0, 80);
-        var co2 = generateRandomNumber(200, 1000);
-        var temp = generateRandomNumber(0, 28);
-        var temps = generateRandomNumber(1, 59);
+        var actionInput = document.createElement('input');
+        actionInput.type = 'hidden';
+        actionInput.name = (action === 'passer_admin') ? 'passer_admin' : 'supprimer';
+        actionInput.value = 'true';
 
-        bpmElement.innerHTML = bpm + " BPM";
-        humElement.innerHTML = hum + " %";
-        dbElement.innerHTML = db + " dB";
-        co2Element.innerHTML = co2;
-        tempElement.innerHTML = temp + "°C";
-        tempsElement.innerHTML = temps;
+        form.appendChild(actionInput);
+
+        form.submit();
       }
-
-      setInterval(updateRandomNumbers, 2000);
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -209,14 +254,50 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                 <a href="/Views/Logged/AdminPage.php" class="button13">Administration</a>
               </div>
             </div>
-            <div class="buttonRow1">
-              <div class="buttonPlace">
-                <a href="/Views/Logged/AdminFAQ.php" class="button13">Passer Admin</a>
+            <form id="adminForm" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+              <div class="tableUsers">
+                <?php
+                  $link = mysqli_connect("localhost", "root", "", "dbsite"); 
+                  // Check connection
+                  if($link === false){
+                      die("ERROR: Could not connect. " . mysqli_connect_error());
+                      $erreur = "Erreur de connexion à la base de donnée.";
+                  }
+            
+                  $checkQuery = "SELECT * FROM Users";
+                  $result = mysqli_query($link, $checkQuery);
+
+                  if (mysqli_num_rows($result) > 0) {
+                    echo "<table>";
+                    echo "<tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Select</th></tr>";
+                  
+                    while ($row = mysqli_fetch_assoc($result)) {
+                      echo "<tr>";
+                      echo "<td>" . $row['id'] . "</td>";
+                      echo "<td>" . $row['lastname'] . "</td>";
+                      echo "<td>" . $row['firstname'] . "</td>";
+                      echo '<td><input type="checkbox" name="selected_user" value="' . $row['id'] . '" onclick="uncheckOtherCheckboxes(this)"></td>';
+                      echo "</tr>";
+                    }
+                  
+                    echo "</table>";
+                  } else {
+                    echo "Aucun utilisateur trouvé.";
+                  }
+                ?>
               </div>
-              <div class="buttonPlace">
-                <a href="AdminPage.php" class="button12">Supprimer le compte</a>
+            </form>
+              <div class="buttonRow1">
+                <div class="buttonPlace">
+                  <a href="#" name="admin" class="button13" onclick="submitForm('passer_admin')" >Passer Admin</a>
+                </div>
+                <div class="buttonPlace">
+                  <a href="#" name="supprimer" class="button12" onclick="submitForm('supprimer')" >Supprimer le compte</a>
+                </div>
               </div>
-            </div>
+            <?php if (isset($message)): ?>
+                <p class="message"><?php echo $message; ?></p>
+            <?php endif; ?>
           </div>
         </div>
       </div>
