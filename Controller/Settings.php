@@ -143,6 +143,10 @@ if (isset($_POST['delete_account'])) {
             >
           </div>
           <div class="row_menu">
+          <?php
+              if ($admin)
+                {
+            ?>
             <a class="row_menu" href="/Controller/AdminFAQ.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -159,6 +163,9 @@ if (isset($_POST['delete_account'])) {
               </svg>
               <h3>Administrateur</h3></a
             >
+            <?php
+             }
+            ?>
           </div>
         </div>
         <div class="disconnect">
