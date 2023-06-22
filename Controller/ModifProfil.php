@@ -10,6 +10,9 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     $email = $_SESSION['email'];
     $birthdate = $_SESSION['birthdate'];
     $admin = $_SESSION['admin'];
+    setlocale(LC_TIME, 'fr_FR.UTF-8');
+    $date = new DateTime();
+    $currentDate= $date->format('l j F Y');
 
   
 } else {
@@ -239,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               Bonjour
               <?php echo $prenom . ' ' . $nom; ?>
             </h2>
-            <h5>Mardi 20 Juin 2023</h5>
+            <h5><?php echo $currentDate; ?></h5>
           </div>
           <div class="profilButton">
             <a class="profile_menu" href="/Controller/ModifProfil.php"
