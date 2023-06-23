@@ -22,12 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           $erreur = "Erreur de connexion à la base de donnée.";
       }
 
+
       $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND mdp=? LIMIT 1");
-      $stmt->bind_param("ss", $email, $hashedPassword);
+      $stmt->bind_param("ss", $email, $pass);
       $stmt->execute();
       $result = $stmt->get_result();
 
-      if ($result->num_rows == 1 && password_verify($pass, $hashedPassword)) {
+      if ($result->num_rows == 1) {
 
         // Détruire les anciennes données de session
         session_unset();

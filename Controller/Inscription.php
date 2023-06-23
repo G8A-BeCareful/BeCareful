@@ -5,8 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $email = $_POST["email"];
   $userPassword = $_POST["password"];
 
-  $hashedPassword = password_hash($userPassword, PASSWORD_DEFAULT);
-
   $confirmationEmail = $_POST["confirmationEmail"];
   $confirmPassword = $_POST["confirmPassword"];
   $uppercase = preg_match('@[A-Z]@', $userPassword);
@@ -41,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $erreur = "Cet e-mail est déjà assigné à un utilisateur.";
     } else {
         // Attempt insert query execution
-        $sql = "INSERT INTO Users (firstname, lastname, email, mdp) VALUES ('$prenom', '$nom', '$email', '$hashedPassword')";
+        $sql = "INSERT INTO Users (firstname, lastname, email, mdp) VALUES ('$prenom', '$nom', '$email', '$userPassword')";
 
         if(mysqli_query($link, $sql)){
             // Détruire les anciennes données de session
