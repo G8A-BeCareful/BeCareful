@@ -153,6 +153,10 @@ li {
   border-radius: 50%;
   align-self: end;
 }
+
+
+
+
 @media all and (max-width: 970px) {
   .col_1 {
     display: flex;

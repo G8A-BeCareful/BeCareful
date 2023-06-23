@@ -8,6 +8,10 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
     $admin = $_SESSION['admin'];
+
+    setlocale(LC_TIME, 'fr_FR.UTF-8');
+    $date = new DateTime();
+    $currentDate= $date->format('l j F Y');
   
 } else {
     // Rediriger l'utilisateur s'il n'est pas connecté
@@ -31,23 +35,99 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
         var co2Element = document.getElementById("co2");
         var tempElement = document.getElementById("temp");
         var tempsElement = document.getElementById("temps");
+        var typeTempsElement = document.getElementById("typeTemps");
 
-        var bpm = generateRandomNumber(50, 150);
-        var hum = generateRandomNumber(40, 60);
-        var db = generateRandomNumber(0, 80);
-        var co2 = generateRandomNumber(200, 1000);
-        var temp = generateRandomNumber(0, 28);
-        var temps = generateRandomNumber(1, 59);
+        fetch('../Model/CaptTemp.php')
+            .then(function(response) {
+              // Check if the response was successful
+              if (response.ok) {
+                  return response.json(); // Parse the JSON response
+              } else {
+                 throw new Error('Error: ' + response.status);
+              }
+          })
+          .then(function(data) {
+              // Access the sent list from the PHP script
+              var temp = data.decimalValue;
+              tempElement.innerHTML = temp + "°C";
+              var currentDateTime = new Date();
+
+              // Extract the time values from the received array
+              var receivedHour = data.hour;
+              var receivedMinute = data.min;
+              var receivedSecond = data.sec;
+
+              // Create a DateTime object from the received time
+              var receivedDateTime = new Date();
+              receivedDateTime.setHours(parseInt(receivedHour));
+              receivedDateTime.setMinutes(parseInt(receivedMinute));
+              receivedDateTime.setSeconds(parseInt(receivedSecond));
+
+              // Calculate the time difference
+              var timeDifference = Math.abs(currentDateTime - receivedDateTime) / 1000;
+
+              // Get the difference in hours, minutes, and seconds
+              var hours = Math.floor(timeDifference / 3600);
+              var minutes = Math.floor((timeDifference % 3600) / 60);
+              var seconds = Math.floor(timeDifference % 60);
+
+              if (hours == 0){
+                if (minutes==0){
+                  var temps = seconds;
+                  tempsElement.innerHTML = temps;
+                  typeTempsElement.innerHTML = "secondes";
+                }
+                else {
+                  var temps = minutes;
+                  tempsElement.innerHTML = temps;
+                  typeTempsElement.innerHTML = "minutes";
+                }
+              } else {
+                var temps = hours;
+                tempsElement.innerHTML = temps;
+                typeTempsElement.innerHTML = "heures";
+              }
+          })
+         .catch(function(error) {
+            // Handle any error that occurred during the request
+            console.error(error);
+          });
+
+        fetch('../Model/CaptHumi.php')
+            .then(function(response) {
+              // Check if the response was successful
+              if (response.ok) {
+                  return response.json(); // Parse the JSON response
+              } else {
+                 throw new Error('Error: ' + response.status);
+              }
+          })
+          .then(function(data) {
+              // Access the sent list from the PHP script
+              var hum = data.decimalValue;
+              humElement.innerHTML = hum + " %";
+              
+
+          })
+         .catch(function(error) {
+            // Handle any error that occurred during the request
+            console.error(error);
+          });
+
+
+
+        var bpm = generateRandomNumber(30, 200);
+        var db = generateRandomNumber(0, 90);
+        var co2 = generateRandomNumber(200, 2000);
 
         bpmElement.innerHTML = bpm + " BPM";
-        humElement.innerHTML = hum + " %";
         dbElement.innerHTML = db + " dB";
         co2Element.innerHTML = co2;
-        tempElement.innerHTML = temp + "°C";
-        tempsElement.innerHTML = temps;
       }
 
-      setInterval(updateRandomNumbers, 2000);
+      setTimeout(updateRandomNumbers, 50);
+
+      setInterval(updateRandomNumbers, 5000);
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -187,7 +267,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
               Bonjour
               <?php echo $prenom . ' ' . $nom; ?>
             </h2>
-            <h5>Mardi 20 Juin 2023</h5>
+            <h5><?php echo $currentDate; ?></h5>
           </div>
           <div class="profilButton">
             <a class="profile_menu" href="/Controller/ModifProfil.php"
@@ -217,7 +297,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                   <div class="boxMeasures">
                     <div class="dotRed"></div>
                     <h6 class="littleTitle">Fréquence cardiaque</h6>
-                    <p class="commentaire" id="bpm">88 BPM</p>
+                    <p class="commentaire" id="bpm"></p>
                     <h6 class="littleTitle"></h6>
                   </div>
                 </div>
@@ -226,16 +306,16 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                   <div class="boxMeasures">
                     <div class="dotGreen"></div>
                     <h6 class="littleTitle">Humidité</h6>
-                    <p class="commentaire" id="hum">52 %</p>
+                    <p class="commentaire" id="hum"></p>
                     <h6 class="littleTitle"></h6>
                   </div>
                 </div>
                 <div class="boxType">
                   <img class="stpicture" src="/img/image15.png" alt="casque" />
                   <div class="boxMeasures">
-                    <div class="dotOrange"></div>
+                    <div class="dotRed"></div>
                     <h6 class="littleTitle">Audio</h6>
-                    <p class="commentaire" id="db">40 dB</p>
+                    <p class="commentaire" id="db"></p>
                     <h6 class="littleTitle"></h6>
                   </div>
                 </div>
@@ -244,9 +324,9 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                 <div class="boxType">
                   <img class="ndpicture" src="/img/image2.png" alt="cloud CO2" />
                   <div class="boxMeasures">
-                    <div class="dotGreen"></div>
+                    <div class="dotOrange"></div>
                     <h6 class="littleTitle">CO2</h6>
-                    <p class="commentaire" id="co2">368</p>
+                    <p class="commentaire" id="co2"></p>
                     <h6 class="commentaire">Particules par millions</h6>
                   </div>
                 </div>
@@ -255,17 +335,17 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
                   <div class="boxMeasures">
                     <div class="dotGreen"></div>
                     <h6 class="littleTitle">Température</h6>
-                    <p class="commentaire" id="temp">24°C</p>
+                    <p class="commentaire" id="temp"></p>
                     <h6 class="littleTitle"></h6>
                   </div>
                 </div>
                 <div class="boxType">
                   <img class="ndpicture" src="/img/clock.png" alt="Horloge" />
                   <div class="boxMeasures">
-                    <div class="dotGreen"></div>
+                    <div class="dotOrange"></div>
                     <h6 class="littleTitle">Temps depuis dernières mesures</h6>
-                    <p class="commentaire" id="temps">16</p>
-                    <h6 class="commentaire">minutes</h6>
+                    <p class="commentaire" id="temps"></p>
+                    <h6 class="commentaire" id="typeTemps"></h6>
                   </div>
                 </div>
               </div>
