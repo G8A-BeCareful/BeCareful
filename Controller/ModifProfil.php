@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $erreur = "Les mots de passe ne correspondent pas.";
   } else {
    
-    $link = mysqli_connect("localhost", "root", "", "dbsite");
+    $link = mysqli_connect("herogu.garageisep.com", "BnPO2R2pIX_be_careful", "SvfkmIOFz0hQLLac", "LndrbT9YkW_be_careful");
  
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());

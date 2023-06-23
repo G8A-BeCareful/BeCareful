@@ -1,10 +1,10 @@
 <?php
 //require 'mailer.php';
 session_start();
-$servername = "localhost";
-$username = "root"; // Remplacez par votre nom d'utilisateur de la base de données
-$password = ""; // Remplacez par votre mot de passe de la base de données
-$dbname = "dbsite";
+$servername = "herogu.garageisep.com";
+$username = "BnPO2R2pIX_be_careful"; // Remplacez par votre nom d'utilisateur de la base de données
+$password = "SvfkmIOFz0hQLLac"; // Remplacez par votre mot de passe de la base de données
+$dbname = "LndrbT9YkW_be_careful";
 
 
 // try {

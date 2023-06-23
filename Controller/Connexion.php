@@ -8,10 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if (empty($email) || empty($pass)) {
       $erreur = "Veuillez remplir tous les champs.";
     } else if (isset($valider)){
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "dbsite";
+        $servername = "herogu.garageisep.com";
+        $username = "BnPO2R2pIX_be_careful";
+        $password = "SvfkmIOFz0hQLLac";
+        $database = "LndrbT9YkW_be_careful";
 
       // Create connection
       $conn = new mysqli($servername, $username, $password, $database);
