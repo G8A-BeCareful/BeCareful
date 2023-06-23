@@ -23,11 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       }
 
       $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND mdp=? LIMIT 1");
-      $stmt->bind_param("ss", $email, $pass);
+      $stmt->bind_param("ss", $email, $hashedPassword);
       $stmt->execute();
       $result = $stmt->get_result();
 
-      if ($result->num_rows == 1) {
+      if ($result->num_rows == 1 && password_verify($pass, $hashedPassword)) {
 
         // Détruire les anciennes données de session
         session_unset();
@@ -60,8 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       $stmt->close();
       $conn->close();
+    }
   }
-}
 ?>
 
 <!DOCTYPE html>
