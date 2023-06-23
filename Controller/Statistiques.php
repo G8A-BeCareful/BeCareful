@@ -8,6 +8,9 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
     $admin = $_SESSION['admin'];
+    setlocale(LC_TIME, 'fr_FR.UTF-8');
+    $date = new DateTime();
+    $currentDate= $date->format('l j F Y');
   
 } else {
     // Rediriger l'utilisateur s'il n'est pas connecté
@@ -103,6 +106,10 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             >
           </div>
           <div class="row_menu">
+          <?php
+              if ($admin)
+                {
+            ?>
             <a class="row_menu" href="/Controller/AdminFAQ.php"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,6 +126,9 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
               </svg>
               <h3>Administrateur</h3></a
             >
+            <?php
+             }
+            ?>
           </div>
         </div>
         <div class="disconnect">
@@ -147,7 +157,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
               Bonjour
               <?php echo $prenom . ' ' . $nom; ?>
             </h2>
-            <h5>Mardi 20 Juin 2023</h5>
+            <h5><?php echo $currentDate; ?></h5>
           </div>
           <div class="profilButton">
             <a class="profile_menu" href="/Controller/ModifProfil.php"
