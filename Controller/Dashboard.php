@@ -47,7 +47,7 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
         tempsElement.innerHTML = temps;
       }
 
-      setInterval(updateRandomNumbers, 2000);
+      setInterval(updateRandomNumbers, 5000);
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -206,8 +206,8 @@ if(isset($_SESSION['user_id']) && isset($_SESSION['nom']) && isset($_SESSION['pr
             <div class="col_1">
               <div class="roww_1">
                 <div class="boxType">
-                  <img class="stpicture" src="/img/image16.png" alt="heart" />
-                  <div class="boxMeasures">
+                  <img class="stpicture" src="/img/image16.png" alt="heart" />                  
+                  <div class="boxMeasures"> 
                     <div class="dotRed"></div>
                     <h6 class="littleTitle">Fréquence cardiaque</h6>
                     <p class="commentaire" id="bpm">88 BPM</p>

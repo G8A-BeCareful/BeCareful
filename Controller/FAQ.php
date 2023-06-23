@@ -177,16 +177,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="listFooter">
           <div class="BeCareful">
             <p class="title">BeCareful</p>
-            <a class="link" href="/Views/Unlogged/APropos.html"><p>Qui sommes-nous ?</p></a>
+            <a class="link" href="/Vue/APropos.html"><p>Qui sommes-nous ?</p></a>
             <p>Adresse : 10 Rue de Vanves,92130, Issy-les-Moulineaux</p>
             <p>Horaires : Du lundi au samedi de 9h à 18h</p>
-            <a class="link" href="/Views/Unlogged/Notre_Produit.html"><p>Notre Produit</p></a>
+            <a class="link" href="/Vue/Notre_Produit.html"><p>Notre Produit</p></a>
           </div>
         </div>
         <div>
           <div class="BeCareful">
             <p class="title">Aide</p>
-            <a class="link" href="/Views/Unlogged/FAQ.php"><p>FAQ</p></a>
+            <a class="link" href="/Controller/FAQ.php"><p>FAQ</p></a>
             <p>© BeCareful 2023</p>
           </div>
         </div>
@@ -195,10 +195,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <div>
             <p class="title">Conditions D'utilisations</p>
             
-                        <a class="link" href="/Views/Unlogged/Politique.html"><p>Politique de confidentialité</p>
+                        <a class="link" href="/Vue/Politique.html"><p>Politique de confidentialité</p>
 </a>
 
-<a class="link" href="/Views/Unlogged/CGU.html"><p>CGU</p></a>
+<a class="link" href="/Vue/CGU.html"><p>CGU</p></a>
           </div>
         </div>
       </div>
